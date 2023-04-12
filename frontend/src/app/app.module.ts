@@ -3,10 +3,13 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import AlertModule from "ngx-bootstrap";
+import { SportsListComponent } from './components/sports-list/sports-list.component'
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SportsListComponent
   ],
   imports: [
     BrowserModule,
