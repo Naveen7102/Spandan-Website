@@ -37,7 +37,7 @@ div {
 
 .fixtures{
     margin: 0% 15% 0% 15%;
-    
+    box-shadow: 5px 5px gray;
     color: white;
 }
 
@@ -57,4 +57,27 @@ div {
 
 .text{
     width: fit-content;
+}
+
+.search{
+    display: inline-block;
+    width: 28%;
+    margin-right: 2%;
+    margin-bottom: 2%;
+}
+
+.add-rule{
+    padding: 1% 3%;
+    width: 50%;
+    text-align: center;
+    margin: 3% auto;
+    box-shadow: 5px 5px gray;
+}
+
+.update-fixture{
+    padding: 1% 3%;
+    width: 50%;
+    text-align: center;
+    margin: 1% auto;
+    box-shadow: 5px 5px gray;
 }
