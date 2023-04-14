@@ -29,42 +29,32 @@ div {
     margin: 0 0 0 auto;
 }
 
-.row{
-    margin-bottom: 3%;
-}
-
-.sports-list{
-    margin: 0% 5% 0% 5%;
-    
-}
-
-.sport{
-    border-radius: 2%;
-    border-color:lightslategray;
-    border-width: medium;
-    box-shadow: 5px 5px gray;
-    margin: 0% auto;
-}
-
-.container{
+.page-title{
     padding-top: 5%;
-}
-
-.card-title{
+    padding-bottom: 2%;
     text-align: center;
 }
 
-.btn{
-    margin: 0% 1%;
-    font-size: small;
+.fixtures{
+    margin: 0% 15% 0% 15%;
+    
+    color: white;
 }
 
-.sports-img{
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.buttons{
+.table{
+    color:burlywood;
     text-align: center;
+}
+
+.table-row:hover{
+    background-color:rgb(101, 106, 111);
+}
+
+.table-row{
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
+}
+
+.text{
+    width: fit-content;
 }

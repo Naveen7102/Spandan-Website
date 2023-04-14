@@ -5,13 +5,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import AlertModule from "ngx-bootstrap";
 import { SportsListComponent } from './components/sports-list/sports-list.component';
-import { FixturesComponent } from './components/fixtures/fixtures.component'
+import { FixturesComponent } from './components/fixtures/fixtures.component';
+import { CreateOrJointTeamComponent } from './components/create-or-joint-team/create-or-joint-team.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     SportsListComponent,
-    FixturesComponent
+    FixturesComponent,
+    CreateOrJointTeamComponent
   ],
   imports: [
     BrowserModule,
