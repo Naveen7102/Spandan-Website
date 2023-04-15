@@ -1,0 +1,31 @@
+body {
+    color: white;
+    background-repeat: repeat-x;
+    padding-bottom: 15.5%;
+    background-attachment: fixed;
+}
+
+p {
+    text-align: center;
+}
+
+div {
+    background-color: transparent;
+}
+
+.navbar-custom{
+    background-color:darkslategray;
+}
+
+.navbar-custom .navbar-brand,
+        .navbar-custom .navbar-text,  .navbar-custom .nav-link{
+            color: rgb(251, 223, 223);
+}
+
+.card{
+    margin-top: 8%;
+    border-color:lightslategray;
+    border-width: medium;
+    box-shadow: 5px 5px gray;
+    background-color: rgba(0,0,0,.2);
+}

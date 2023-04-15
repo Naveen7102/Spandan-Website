@@ -3,11 +3,18 @@ import { RouterModule, Routes } from '@angular/router';
 import { SportsListComponent } from './components/sports-list/sports-list.component';
 import { FixturesComponent } from './components/fixtures/fixtures.component';
 import { CreateOrJointTeamComponent } from './components/create-or-joint-team/create-or-joint-team.component';
+import { LoginComponent } from './components/login/login.component';
+import { SignupComponent } from './components/signup/signup.component';
+import { HomepageComponent } from './components/homepage/homepage.component';
 
 const routes: Routes = [
+  { path: "", component:HomepageComponent},
   { path: "sports", component: SportsListComponent},
   { path: "fixtures", component: FixturesComponent},
-  { path: "create-join-team", component: CreateOrJointTeamComponent}
+  { path: "create-join-team", component: CreateOrJointTeamComponent},
+  { path: "login", component: LoginComponent},
+  { path: "signup", component: SignupComponent},
+  { path: "home", component: HomepageComponent}
 ];
 
 @NgModule({
