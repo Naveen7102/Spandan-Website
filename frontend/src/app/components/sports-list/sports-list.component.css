@@ -44,6 +44,24 @@ div {
     border-width: medium;
     box-shadow: 5px 5px gray;
     margin: 0% auto;
+    cursor: pointer;
+}
+
+.sport:hover {
+    animation: jump 1s;
+    animation-fill-mode: forwards;
+}
+  
+@keyframes jump {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+    100% {
+        transform: translateY(0);
+    }
 }
 
 .container{
