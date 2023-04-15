@@ -8,7 +8,8 @@ import { SportsListComponent } from './components/sports-list/sports-list.compon
 import { FixturesComponent } from './components/fixtures/fixtures.component';
 import { CreateOrJointTeamComponent } from './components/create-or-joint-team/create-or-joint-team.component';
 import { LoginComponent } from './components/login/login.component';
-import { SignupComponent } from './components/signup/signup.component'
+import { SignupComponent } from './components/signup/signup.component';
+import { HomepageComponent } from './components/homepage/homepage.component'
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { SignupComponent } from './components/signup/signup.component'
     FixturesComponent,
     CreateOrJointTeamComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    HomepageComponent
   ],
   imports: [
     BrowserModule,

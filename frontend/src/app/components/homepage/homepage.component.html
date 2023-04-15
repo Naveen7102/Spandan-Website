@@ -2,7 +2,7 @@
 <html>
 <head>
 
-    <title>login</title>  
+    <title>Home Page</title>  
     <!-- Google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,7 +13,11 @@
 </head>
 <body class="body" background="../../../assets/background-3.jpg">
   <nav class="navbar sticky-top navbar-expand-lg navbar-custom">
-    <a class="navbar-brand" href="#">Spandan</a>
+    <a class="navbar-brand name" href="#">Spandan</a>
+    <div class="links">
+        <a href="login">Login</a>
+        <a href="signup">Register</a>
+    </div>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -29,36 +33,40 @@
         </li>
       </ul>
     </div> -->
-
   </nav>
-  
+
     <div class="container">
-        <div class="row justify-content-center mt-5">
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-header">
-                        <h3 class="text-center">Login</h3>
+        <h1>Welcome to Spandan</h1>
+        <p>The Annual Sports Fest of IIITB</p>
+    </div>
+    
+    <div class="container countdown">
+        <div class="row">
+            <div class="col-md-6 offset-md-3 text-center">
+                <h1>The Event Starts In</h1>
+                <div class="countdown-timer" id="countdown-timer">
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="days">{{ days }}</span>
+                        <span class="countdown-label">Days</span>
                     </div>
-                    <div class="card-body">
-                        <form>
-                            <div class="form-group">
-                                <label for="username">Username</label>
-                                <input type="text" class="form-control" id="username" placeholder="Enter username">
-                            </div>
-                            <div class="form-group">
-                                <label for="password">Password</label>
-                                <input type="password" class="form-control" id="password" placeholder="Enter password">
-                            </div>
-                            <button type="submit" class="btn btn-primary btn-block">Login</button>
-                        </form>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="hours">{{ hours }}</span>
+                        <span class="countdown-label">Hours</span>
                     </div>
-                    <div class="card-footer">
-                        <p class="text-center">Not registered? <a href="signup">Create an account</a></p>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="minutes">{{ minutes }}</span>
+                        <span class="countdown-label">Minutes</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="seconds">{{ seconds }}</span>
+                        <span class="countdown-label">Seconds</span>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    
+    
 
 </body>
 </html>
