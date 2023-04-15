@@ -21,7 +21,7 @@ public class UserService {
     public ResponseEntity<Message> addUser(Map<String, String> requestMap) {
         Message success = new Message("User added Successfully.");
         Message addFailed = new Message("Invalid Data");
-        Message failed = new Message("Something Went Wrong at Student Service.");
+        Message failed = new Message("Something Went Wrong at User Service.");
         try{
             if(validateAddUser(requestMap)){
                 userRepository.save(createUserFromMap(requestMap));
@@ -41,7 +41,7 @@ public class UserService {
     private User createUserFromMap(Map<String, String> requestMap) {
         User user = new User();
 
-        user.setUserType(requestMap.get("userType"));
+        user.setUserType(requestMap.get("user_type"));
         user.setPassword(requestMap.get("password"));
         user.setUsername(requestMap.get("username"));
         user.setEmail(requestMap.get("email"));
@@ -52,7 +52,7 @@ public class UserService {
 
     private boolean validateAddUser(Map<String, String> requestMap) {
         System.out.println(requestMap);
-        if(requestMap.containsKey("username") && requestMap.containsKey("password") && requestMap.containsKey("userType") && requestMap.containsKey("email") && requestMap.containsKey("phone_no"))
+        if(requestMap.containsKey("username") && requestMap.containsKey("password") && requestMap.containsKey("user_type") && requestMap.containsKey("email") && requestMap.containsKey("phone_no"))
         {
             return true;
         }
