@@ -1,13 +1,13 @@
-package com.spe.spandan_backend;
+package com.spe.spandan;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SpandanBackendApplication {
+public class SpandanApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SpandanBackendApplication.class, args);
+		SpringApplication.run(SpandanApplication.class, args);
 	}
 
 }
