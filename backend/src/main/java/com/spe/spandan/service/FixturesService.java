@@ -12,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
@@ -82,11 +83,14 @@ public class FixturesService {
                 fr.setTime(f.getTime());
                 fr.setResult(f.getResult());
                 fr.setSport(sport);
+                fr.setTeam1(teamsRepository.getTeamName(f.getTeam1_id()));
+                fr.setTeam2(teamsRepository.getTeamName(f.getTeam2_id()));
                 if(f.getWinner() == -1)
                 {
                     fr.setWinner("-");
                 }
                 else {
+//                    System.out.println(f.getWinner());
                     if(f.getWinner() == f.getTeam1_id()){
                         fr.setWinner(fr.getTeam1());
                     }
@@ -94,8 +98,7 @@ public class FixturesService {
                         fr.setWinner(fr.getTeam2());
                     }
                 }
-                fr.setTeam1(teamsRepository.getTeamName(f.getTeam1_id()));
-                fr.setTeam2(teamsRepository.getTeamName(f.getTeam2_id()));
+
                 fList.add(fr);
             }
             FixtureList fl = new FixtureList(fList);
@@ -107,5 +110,24 @@ public class FixturesService {
         }
         FixtureList fl = new FixtureList();
         return new ResponseEntity<FixtureList>(fl, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    @Transactional
+    public ResponseEntity<Message> updateResult(Map<String, String> requestMap) {
+        Message success = new Message("Fixture updated Successfully.");
+        Message failed = new Message("Something Went Wrong at Fixture Service.");
+        try{
+            Integer id = Integer.parseInt(requestMap.get("id"));
+            String winner = requestMap.get("winner");
+            String result = requestMap.get("result");
+            Integer winner_id = teamsRepository.getTeamId(winner);
+            fixturesRepository.updateResult(result,winner_id,id);
+            return new ResponseEntity<Message>(success, HttpStatus.OK);
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        return new ResponseEntity<Message>(failed, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }

@@ -45,4 +45,16 @@ public class FixturesController {
         }
         return new ResponseEntity<FixtureList>(failed, HttpStatus.INTERNAL_SERVER_ERROR);
     }
+
+    @PostMapping(path = "fixtures/updateResult")
+    public ResponseEntity<Message> updateResult(@RequestBody(required = true) Map<String, String> requestMap){
+        Message failed = new Message("Something Went Wrong at Fixture Controller.");
+        try{
+            return fixturesService.updateResult(requestMap);
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        return new ResponseEntity<Message>(failed, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
 }
