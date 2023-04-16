@@ -24,8 +24,12 @@ public class Teams {
     @Column(name = "name")
     private String name;
 
-    public Teams(String name) {
+    @Column(name = "sport_id")
+    private Integer sport_id;
+
+    public Teams(String name, Integer sport_id) {
         this.name = name;
+        this.sport_id = sport_id;
     }
 
     public Teams() {
@@ -45,5 +49,13 @@ public class Teams {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Integer getSport_id() {
+        return sport_id;
+    }
+
+    public void setSport_id(Integer sport_id) {
+        this.sport_id = sport_id;
     }
 }
