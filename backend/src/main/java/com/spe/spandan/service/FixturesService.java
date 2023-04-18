@@ -90,7 +90,6 @@ public class FixturesService {
                     fr.setWinner("-");
                 }
                 else {
-//                    System.out.println(f.getWinner());
                     if(f.getWinner() == f.getTeam1_id()){
                         fr.setWinner(fr.getTeam1());
                     }
