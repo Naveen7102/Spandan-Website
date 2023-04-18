@@ -11,11 +11,12 @@ export class HomepageService {
 
   constructor(private http: HttpClient) { }
 
-  getStartDate(): Observable<string>{
-    return this.http.get<string>(`${baseUrl}/date/getDate`);
+  getStartDate(): Observable<any>{
+    return this.http.get<any>(`${baseUrl}/date/getDate`);
   }
 
-  setStartDate(date: string): Observable<string>{
+  setStartDate(date: any): Observable<string>{
+    console.log(date);
     return this.http.post<string>(`${baseUrl}/date/addStartDate`, date);
   }
 

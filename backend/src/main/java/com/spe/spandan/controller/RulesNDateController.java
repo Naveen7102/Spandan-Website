@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.*;
 
+import javax.transaction.Transactional;
 import java.sql.Date;
 import java.util.Map;
 
@@ -24,11 +25,11 @@ public class RulesNDateController {
     @Autowired
     RulesRepository rulesRepository;
 
+    @Transactional
     @PostMapping(path = "date/addStartDate")
-    public ResponseEntity<Message> addDate(@RequestBody(required = true) Date date) {
+    public ResponseEntity<Message> addDate(@RequestBody(required = true) Map<String, String> requestMap) {
         try{
-            StartDate sd = new StartDate(date);
-            startDateRepository.save(sd);
+            startDateRepository.updateDate(requestMap.get("date"));
             Message success = new Message("Date added Successfully.");
             return new ResponseEntity<Message>(success, HttpStatus.OK);
         }
@@ -39,8 +40,8 @@ public class RulesNDateController {
         return new ResponseEntity<Message>(failed, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
-    @GetMapping(path = "date/getStartDate")
-    public ResponseEntity<StartDate> getStartDate(){
+    @GetMapping(path = "date/getDate")
+    public ResponseEntity<StartDate> getDate(){
         try{
             return new ResponseEntity<StartDate>(startDateRepository.getDate(), HttpStatus.OK);
         }

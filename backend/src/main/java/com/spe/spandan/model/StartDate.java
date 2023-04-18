@@ -23,9 +23,9 @@ public class StartDate {
     private Integer id;
 
     @Column(name = "date")
-    private Date date;
+    private String date;
 
-    public StartDate(Date date) {
+    public StartDate(String date) {
         this.date = date;
     }
 
@@ -40,11 +40,11 @@ public class StartDate {
         this.id = id;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 }
