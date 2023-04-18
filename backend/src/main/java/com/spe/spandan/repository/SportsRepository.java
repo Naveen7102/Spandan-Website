@@ -10,5 +10,5 @@ public interface SportsRepository extends JpaRepository<Sports,Integer> {
     Integer getSportId(@Param("sport") String sport);
 
     @Query(value = "SELECT s.name from sports s where s.id = :id ", nativeQuery = true)
-    String getSportId(@Param("id") Integer id);
+    String getSportName(@Param("id") Integer id);
 }
