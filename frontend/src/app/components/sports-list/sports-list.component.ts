@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataexchangeService } from 'src/app/services/dataexchange.service';
+import { SportslistService } from 'src/app/services/sportslist.service';
 
 @Component({
   selector: 'app-sports-list',
@@ -9,10 +10,11 @@ import { DataexchangeService } from 'src/app/services/dataexchange.service';
 })
 export class SportsListComponent {
 
+  sport: string = '';
   sports: Array<string>;
   sportsArr: Array<Array<string>>;
 
-  constructor(private router: Router, private dataservice: DataexchangeService) {
+  constructor(private router: Router, private dataservice: DataexchangeService, private sportsService: SportslistService) {
     this.sports = new Array<string>;
     this.sportsArr = new Array<Array<string>>;
     this.sportsArr.push(new Array<string>);
@@ -23,7 +25,7 @@ export class SportsListComponent {
     for( var i = 0; i<this.sports.length; i+=3)
     {
       var sublist = new Array<string>;
-      for(var j = 0; j < 3 ; j+=1)
+      for(var j = 0; j < 3 && i+j < this.sports.length ; j+=1)
       {
         sublist.push(this.sports[i+j]);
       }
@@ -44,6 +46,19 @@ export class SportsListComponent {
   redirectToTeamsPage(sport:string) {
     this.dataservice.changeSport(sport);
     this.router.navigate(['create-join-team']);
+  }
+
+  onSportChange(UpdatedValue: string):void{
+		this.sport = UpdatedValue;
+	}
+
+  AddSport(sport: string){
+    this.sportsService.addSport(sport)
+    .subscribe({
+      next: (data:string) => {
+      },
+      error: (e) => console.error(e)
+    });
   }
 
 }

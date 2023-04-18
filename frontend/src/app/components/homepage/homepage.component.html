@@ -35,36 +35,46 @@
     </div> -->
   </nav>
 
-    <div class="container">
-        <h1>Welcome to Spandan</h1>
-        <p>The Annual Sports Fest of IIITB</p>
-    </div>
-    
-    <div class="container countdown">
-        <div class="row">
-            <div class="col-md-6 offset-md-3 text-center">
-                <h1>The Event Starts In</h1>
-                <div class="countdown-timer" id="countdown-timer">
-                    <div class="countdown-item">
-                        <span class="countdown-number" id="days">{{ days }}</span>
-                        <span class="countdown-label">Days</span>
-                    </div>
-                    <div class="countdown-item">
-                        <span class="countdown-number" id="hours">{{ hours }}</span>
-                        <span class="countdown-label">Hours</span>
-                    </div>
-                    <div class="countdown-item">
-                        <span class="countdown-number" id="minutes">{{ minutes }}</span>
-                        <span class="countdown-label">Minutes</span>
-                    </div>
-                    <div class="countdown-item">
-                        <span class="countdown-number" id="seconds">{{ seconds }}</span>
-                        <span class="countdown-label">Seconds</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+  <div class="container">
+      <h1>Welcome to Spandan</h1>
+      <p>The Annual Sports Fest of IIITB</p>
+  </div>
+  
+  <div class="container countdown">
+      <div class="row">
+          <div class="col-md-6 offset-md-3 text-center">
+              <h1>The Event Starts In</h1>
+              <div class="countdown-timer" id="countdown-timer">
+                  <div class="countdown-item">
+                      <span class="countdown-number" id="days">{{ days }}</span>
+                      <span class="countdown-label">Days</span>
+                  </div>
+                  <div class="countdown-item">
+                      <span class="countdown-number" id="hours">{{ hours }}</span>
+                      <span class="countdown-label">Hours</span>
+                  </div>
+                  <div class="countdown-item">
+                      <span class="countdown-number" id="minutes">{{ minutes }}</span>
+                      <span class="countdown-label">Minutes</span>
+                  </div>
+                  <div class="countdown-item">
+                      <span class="countdown-number" id="seconds">{{ seconds }}</span>
+                      <span class="countdown-label">Seconds</span>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <div class="set-date">
+    <input type="text" class="form-control search" placeholder="Set Start Date fo Spandan" [ngModel] ='date' (ngModelChange)='onDateChange($event)'>
+    <button class="btn btn-primary" (click)="SetDate(date)">Set Date</button>
+  </div>
+
+  <div class="add-spocs">
+    <input type="text" class="form-control search" placeholder="Add SPOC Email Address " [ngModel] ='email' (ngModelChange)='onMailChange($event)'>
+    <button class="btn btn-primary" (click)="AddSpocs(email)">Add Spocs</button>
+  </div>
     
     
 

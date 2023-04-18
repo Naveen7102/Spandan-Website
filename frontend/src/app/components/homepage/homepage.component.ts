@@ -8,12 +8,14 @@ import { HomepageService } from 'src/app/services/homepage.service';
 })
 export class HomepageComponent implements OnInit {
   targetDate: Date = new Date('2023-04-30');
+  date: string = '';
+  email: string = '';
   days: number = 0;
   hours: number = 0;
   minutes: number = 0;
   seconds: number = 0;
 
-  constructor(private homepageservice: HomepageService) { }
+  constructor(private homepageservice: HomepageService) {  }
 
   ngOnInit(): void {
     this.getDate();
@@ -37,6 +39,35 @@ export class HomepageComponent implements OnInit {
       .subscribe({
         next: (data:string) => {
           this.targetDate = new Date(data);
+        },
+        error: (e) => console.error(e)
+      });
+  }
+
+  onDateChange(UpdatedValue: string):void
+	{
+		this.date = UpdatedValue;
+	}
+
+  onMailChange(UpdatedValue: string):void
+	{
+		this.email = UpdatedValue;
+	}
+
+  SetDate(date: string): void{
+    this.homepageservice.setStartDate(date)
+      .subscribe({
+        next: (data:string) => {
+          this.targetDate = new Date(date);
+        },
+        error: (e) => console.error(e)
+      });
+  }
+
+  AddSpocs(email: string): void{
+    this.homepageservice.addSpoc(email)
+      .subscribe({
+        next: (data:string) => {
         },
         error: (e) => console.error(e)
       });
