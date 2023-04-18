@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HomepageService } from 'src/app/services/homepage.service';
 
 @Component({
   selector: 'app-homepage',
@@ -6,15 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./homepage.component.css']
 })
 export class HomepageComponent implements OnInit {
-  targetDate: Date = new Date('2023-04-30T00:00:00');
+  targetDate: Date = new Date('2023-04-30');
   days: number = 0;
   hours: number = 0;
   minutes: number = 0;
   seconds: number = 0;
 
-  constructor() { }
+  constructor(private homepageservice: HomepageService) { }
 
   ngOnInit(): void {
+    this.getDate();
     setInterval(() => {
       this.calculateCountdown();
     }, 1000);
@@ -29,4 +31,15 @@ export class HomepageComponent implements OnInit {
     this.minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     this.seconds = Math.floor((distance % (1000 * 60)) / 1000);
   }
+
+  getDate(): void {
+    this.homepageservice.getStartDate()
+      .subscribe({
+        next: (data:string) => {
+          this.targetDate = new Date(data);
+        },
+        error: (e) => console.error(e)
+      });
+  }
+
 }

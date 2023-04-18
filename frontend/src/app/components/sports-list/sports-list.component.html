@@ -35,88 +35,18 @@
     </div> -->
 
   </nav>
-
+  
   <div class="sports-list">
     <div class="container">
-      <div class="row">
-        <div class="col-sm-6 col-md-4">
+      <div class="row" *ngFor="let subsport of sportsArr; index as i">
+        <div class="col-sm-6 col-md-4" *ngFor="let sport of subsport; index as j" >
           <div class="card sport" style="width: 18rem;">
-            <img class="card-img-top sports-img" src="../../../assets/cricket.jpg" alt="Card image cap">
+            <img class="card-img-top sports-img" [src]="'../../../assets/' + sport  + '.jpg'" alt="Card image cap">
             <div class="card-body">
-              <h5 class="card-title">Cricket</h5>
-              
+              <h5 class="card-title">{{sport}}</h5>
               <div class="buttons">
-                <button class="btn btn-primary" (click)="redirectToFixturesPage()">Fixtures</button>
-                <button href="#" class="btn btn-primary" (click)="redirectToTeamsPage()">Create/Join a Team</button>
-              </div>
-              
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4">
-          <div class="card sport" style="width: 18rem;">
-            <img class="card-img-top sports-img" src="../../../assets/badminton.jpg" alt="Card image cap">
-            <div class="card-body">
-              <h5 class="card-title">Badminton</h5>
-              
-              <div class="buttons">
-                <button class="btn btn-primary" (click)="redirectToFixturesPage()">Fixtures</button>
-                <button href="#" class="btn btn-primary" (click)="redirectToTeamsPage()">Create/Join a Team</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4">
-          <div class="card sport" style="width: 18rem;">
-            <img class="card-img-top sports-img" src="../../../assets/tt.jpg" alt="Card image cap">
-            <div class="card-body">
-              <h5 class="card-title">Table Tennis</h5>
-              
-              <div class="buttons">
-                <button class="btn btn-primary" (click)="redirectToFixturesPage()">Fixtures</button>
-                <button href="#" class="btn btn-primary" (click)="redirectToTeamsPage()">Create/Join a Team</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-6 col-md-4">
-          <div class="card sport" style="width: 18rem;">
-            <img class="card-img-top sports-img" src="../../../assets/football.jpg" alt="Card image cap">
-            <div class="card-body">
-              <h5 class="card-title">Foot Ball</h5>
-              
-              <div class="buttons">
-                <button class="btn btn-primary" (click)="redirectToFixturesPage()">Fixtures</button>
-                <button href="#" class="btn btn-primary" (click)="redirectToTeamsPage()">Create/Join a Team</button>
-              </div>
-              
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4">
-          <div class="card sport" style="width: 18rem;">
-            <img class="card-img-top sports-img" src="../../../assets/volleyball.jpg" alt="Card image cap">
-            <div class="card-body">
-              <h5 class="card-title">Volley Ball</h5>
-              
-              <div class="buttons">
-                <button class="btn btn-primary" (click)="redirectToFixturesPage()">Fixtures</button>
-                <button href="#" class="btn btn-primary" (click)="redirectToTeamsPage()">Create/Join a Team</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4">
-          <div class="card sport" style="width: 18rem;">
-            <img class="card-img-top sports-img" src="../../../assets/basketball.jpg" alt="Card image cap">
-            <div class="card-body">
-              <h5 class="card-title">Basket Ball</h5>
-              
-              <div class="buttons">
-                <button class="btn btn-primary" (click)="redirectToFixturesPage()">Fixtures</button>
-                <button href="#" class="btn btn-primary" (click)="redirectToTeamsPage()">Create/Join a Team</button>
+                <button class="btn btn-primary" (click)="redirectToFixturesPage(sport)">Fixtures</button>
+                <button href="#" class="btn btn-primary" (click)="redirectToTeamsPage(sport)">Create/Join a Team</button>
               </div>
             </div>
           </div>
