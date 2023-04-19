@@ -40,22 +40,22 @@
                         <h3 class="text-center">SignUp</h3>
                     </div>
                     <div class="card-body">
-                        <form>
+                        <form (ngSubmit)="onSubmit()">
                             <div class="form-group">
-                                <label for="email" class="form-label">Email address</label>
-                                <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Email">
+                                <label for="email" class="form-label" >Email address</label>
+                                <input type="email" class="form-control" name="name" [(ngModel)]="email" id="email" aria-describedby="emailHelp" placeholder="Email">
                             </div>
                             <div class="form-group">
-                                <label for="password">Password</label>
-                                <input type="password" class="form-control" id="password" placeholder="Enter password">
+                                <label for="password" >Password</label>
+                                <input type="password" class="form-control" name="password" [(ngModel)]="password" id="password" placeholder="Enter password">
                             </div>
                             <div class="form-group">
-                                <label for="confirmPassword" class="form-label">Confirm Password</label>
-                                <input type="password" class="form-control" id="confirmPassword" placeholder="ReEnter password">
+                                <label for="confirmPassword" class="form-label" >Confirm Password</label>
+                                <input type="password" class="form-control" name="password_c" [(ngModel)]="password_c" id="confirmPassword" placeholder="ReEnter password">
                             </div>
                             <div class="form-group">
-                              <label for="Mobile No." class="form-label">Mobile Number</label>
-                              <input type="tel" class="form-control" id="MobileNo" placeholder="Mobile Number">
+                              <label for="Mobile No." class="form-label" >Mobile Number</label>
+                              <input type="tel" class="form-control" name="mobile_no" [(ngModel)]="number" id="MobileNo" placeholder="Mobile Number">
                           </div>
                             <button type="submit" class="btn btn-primary btn-block">Signup</button>
                         </form>

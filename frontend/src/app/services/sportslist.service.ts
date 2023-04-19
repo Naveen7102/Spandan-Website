@@ -15,4 +15,8 @@ export class SportslistService {
     return this.http.post<string>(`${baseUrl}/sport/addSport`,sport);
   }
 
+  addSpoc(email: string): Observable<string>{
+    return this.http.post<string>(`${baseUrl}/SetSpoc`, email);
+  }
+
 }

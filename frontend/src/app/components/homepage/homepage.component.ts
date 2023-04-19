@@ -10,7 +10,7 @@ export class HomepageComponent implements OnInit {
   targetDate: Date = new Date('2023-04-30');
   // date: Date = new Date('2023-04-30');
   date : string = '';
-  email: string = '';
+  
   days: number = 0;
   hours: number = 0;
   minutes: number = 0;
@@ -50,11 +50,6 @@ export class HomepageComponent implements OnInit {
 		this.date = UpdatedValue;
 	}
 
-  onMailChange(UpdatedValue: string):void
-	{
-		this.email = UpdatedValue;
-	}
-
   SetDate(date: string): void{
     const data = {
       date : date
@@ -68,13 +63,6 @@ export class HomepageComponent implements OnInit {
       });
   }
 
-  AddSpocs(email: string): void{
-    this.homepageservice.addSpoc(email)
-      .subscribe({
-        next: (data:string) => {
-        },
-        error: (e) => console.error(e)
-      });
-  }
+  
 
 }

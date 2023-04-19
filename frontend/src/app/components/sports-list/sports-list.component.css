@@ -86,3 +86,21 @@ div {
 .buttons{
     text-align: center;
 }
+
+.add-spocs{
+    margin: 3% 15% 0% 15%;
+    text-align: center;
+    
+}
+
+.add-sport{
+    margin: 3% 15% 0% 15%;
+    text-align: center;
+    
+}
+
+.search{
+    display: inline-block;
+    width: 28%;
+    margin-right: 2%;
+}

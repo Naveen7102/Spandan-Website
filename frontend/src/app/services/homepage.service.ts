@@ -20,8 +20,6 @@ export class HomepageService {
     return this.http.post<string>(`${baseUrl}/date/addStartDate`, date);
   }
 
-  addSpoc(email: string): Observable<string>{
-    return this.http.post<string>(`${baseUrl}/SetSpoc`, email);
-  }
+  
 
 }

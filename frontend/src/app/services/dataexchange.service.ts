@@ -6,10 +6,17 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class DataexchangeService {
   private nameSource = new BehaviorSubject<string>('');
-  name = this.nameSource.asObservable()
+  name = this.nameSource.asObservable();
+
+  private userIdSource = new BehaviorSubject<number>(1);
+  id = this.userIdSource.asObservable();
 
   changeSport(name: string) {
     this.nameSource.next(name);
+  }
+
+  changeUserId(id: number) {
+    this.userIdSource.next(id);
   }
 
   constructor() { }

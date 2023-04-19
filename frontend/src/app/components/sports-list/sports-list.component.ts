@@ -13,11 +13,19 @@ export class SportsListComponent {
   sport: string = '';
   sports: Array<string>;
   sportsArr: Array<Array<string>>;
+  email: string = '';
+  user_id: number;
 
   constructor(private router: Router, private dataservice: DataexchangeService, private sportsService: SportslistService) {
     this.sports = new Array<string>;
     this.sportsArr = new Array<Array<string>>;
     this.sportsArr.push(new Array<string>);
+    this.user_id = -1;
+    this.dataservice.id.subscribe(data=>{
+      this.user_id = data;
+    });
+    console.log("sfdz");
+    console.log(this.user_id);
   }
 
   ngOnInit(): void {
@@ -33,6 +41,11 @@ export class SportsListComponent {
     }
     console.log(this.sportsArr);
   }
+
+  onMailChange(UpdatedValue: string):void
+	{
+		this.email = UpdatedValue;
+	}
 
   getSports(){
     this.sports = ['Cricket','Football','Badminton', 'Table Tennis', 'Basketball', 'Volleyball']
@@ -59,6 +72,15 @@ export class SportsListComponent {
       },
       error: (e) => console.error(e)
     });
+  }
+
+  AddSpocs(email: string): void{
+    this.sportsService.addSpoc(email)
+      .subscribe({
+        next: (data:string) => {
+        },
+        error: (e) => console.error(e)
+      });
   }
 
 }

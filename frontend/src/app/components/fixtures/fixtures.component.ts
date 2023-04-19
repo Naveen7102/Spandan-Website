@@ -22,8 +22,8 @@ export class FixturesComponent implements OnInit  {
 
   }
 
-  changeSport(name: string) {
-    this.dataservice.changeSport(this.sport);
-  }
+  // changeSport(name: string) {
+  //   this.dataservice.changeSport(this.sport);
+  // }
 
 }
