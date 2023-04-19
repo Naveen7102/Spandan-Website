@@ -44,9 +44,9 @@
 
     <div class="join-team" *ngIf="displayTeamPlayers">
         <div class="members-list" *ngFor="let player of players;">
-            <p class="btn btn-primary player col-sm-3">player</p>
+            <p class="btn btn-primary player col-sm-3">{{player}}</p>
         </div>
-        <button class="btn btn-primary">Join Team</button>
+        <button class="btn btn-primary" (click)="joinTeam()">Join Team</button>
     </div>
 
     <div class="teams-list">
@@ -54,13 +54,9 @@
       <button class="btn btn-primary" (click)="getTeamslist()" *ngIf="getTeams">Get Teams</button>
 
       <div class="get-teams" *ngIf="!getTeams">
-        <p class="btn btn-primary player col-sm-3">Player 1</p>
-        <p class="btn btn-primary player col-sm-3">Player 1</p>
-        <p class="btn btn-primary player col-sm-3">Player 1</p>
-        <p class="btn btn-primary player col-sm-3">Player 1</p>
-        <p class="btn btn-primary player col-sm-3">Player 1</p>
-        <p class="btn btn-primary player col-sm-3">Player 1</p>
-        <p class="btn btn-primary player col-sm-3">Player 1</p>
+        <div *ngFor="let team of teamsList;">
+          <button class="btn btn-primary player col-sm-3">{{team}}</button>
+        </div>
       </div>
 
     </div>

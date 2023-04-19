@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Teams } from 'src/app/models/teams.model';
 import { User } from 'src/app/models/user.model';
 import { CreateJoinTeamService } from 'src/app/services/create-join-team.service';
 import { DataexchangeService } from 'src/app/services/dataexchange.service';
@@ -15,12 +16,16 @@ export class CreateOrJointTeamComponent implements OnInit {
   teamName: string;
   players: Array<string>;
   getTeams:boolean;
+  joinTeamName: string;
+  teamsList: Array<Teams>;
 
   constructor(private dataservice: DataexchangeService, private createJoinService: CreateJoinTeamService) {
     this.displayTeamPlayers = false;
     this.teamName = '';
+    this.joinTeamName = '';
     this.getTeams = true;
     this.players = new Array<string>;
+    this.teamsList = new Array<Teams>;
     this.sport_id = -1;
     this.user_details = {};
     this.dataservice.id.subscribe(data => {
@@ -52,6 +57,7 @@ export class CreateOrJointTeamComponent implements OnInit {
         next: (data:Array<string>) => {
           this.players = data;
           this.displayTeamPlayers = true;
+          this.joinTeamName = name;
         },
         error: (e) => {
           alert("invalid login");
@@ -81,8 +87,39 @@ export class CreateOrJointTeamComponent implements OnInit {
     this.teamName = '';
   }
 
-  getTeamslist(){
+  joinTeam(){
+    const data = {
+      sport_id: this.sport_id,
+      team: this.joinTeamName,
+      participant_id: this.user_details.id
+    };
+    console.log(data);
+    this.createJoinService.joinTeam(data)
+    .subscribe({
+      next: (data: string) => {
+        this.displayTeamPlayers = false;
+        alert(data);
+      },
+      error: (e) => {
+        alert("Team not Found");
+        console.error(e);
+      }
+    });
+    this.joinTeamName = '';
+  }
 
+  getTeamslist(){
+    this.createJoinService.getTeams(this.sport_id)
+    .subscribe({
+      next: (data: Array<Teams>) => {
+        this.getTeams = false;
+        this.teamsList = data;
+      },
+      error: (e) => {
+        alert("Team not Found");
+        console.error(e);
+      }
+    });
   }
 
   // changeSport(name: string) {

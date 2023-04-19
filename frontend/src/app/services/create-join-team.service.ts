@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Teams } from '../models/teams.model';
 
 const baseUrl = 'http://localhost:8101';
 
@@ -17,6 +18,15 @@ export class CreateJoinTeamService {
 
   createTeam(data: any): Observable<string>{
     return this.http.post<string>(`${baseUrl}/teams/addTeam`,data);
+  }
+
+  joinTeam(data: any): Observable<string>{
+    console.log(data);
+    return this.http.post<string>(`${baseUrl}/teamsMembers/addMember`,data);
+  }
+
+  getTeams(data: number): Observable<Array<Teams>>{
+    return this.http.get<Array<Teams>>(`${baseUrl}/teams/getTeams/${data}`);
   }
 
 }
