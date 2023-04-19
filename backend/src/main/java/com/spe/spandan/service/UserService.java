@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.spe.spandan.model.User;
 
+import javax.transaction.Transactional;
 import java.util.Map;
 
 @Service
@@ -79,5 +80,20 @@ public class UserService {
         }
         User failed = new User();
         return new ResponseEntity<User>(failed, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    @Transactional
+    public ResponseEntity<Message> updateSPOC(String email) {
+        Message success = new Message("User added Successfully.");
+        Message failed = new Message("Something Went Wrong at User Service.");
+        try{
+            userRepository.updateSPOC(email);
+            return new ResponseEntity<Message>(success, HttpStatus.OK);
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        return new ResponseEntity<Message>(failed, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }

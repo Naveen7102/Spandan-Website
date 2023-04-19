@@ -21,7 +21,7 @@ export class SportslistService {
   }
 
   addSpoc(email: string): Observable<string>{
-    return this.http.post<string>(`${baseUrl}/SetSpoc`, email);
+    return this.http.post<string>(`${baseUrl}/user/updateSPOC`, email);
   }
 
 }
