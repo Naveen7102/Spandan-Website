@@ -6,13 +6,13 @@ import { User } from '../models/user.model';
   providedIn: 'root'
 })
 export class DataexchangeService {
-  private nameSource = new BehaviorSubject<string>('');
+  private nameSource = new BehaviorSubject<number>(-1);
   name = this.nameSource.asObservable();
 
   private userIdSource = new BehaviorSubject<User>({});
   id = this.userIdSource.asObservable();
 
-  changeSport(name: string) {
+  changeSport(name: number) {
     this.nameSource.next(name);
   }
 

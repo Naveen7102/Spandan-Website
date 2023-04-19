@@ -62,12 +62,14 @@ export class SportsListComponent {
     });
   }
 
-  redirectToFixturesPage(sport:any) { 
+  redirectToFixturesPage(sport:number) {
+    this.dataservice.changeUserId(this.user_details);
     this.dataservice.changeSport(sport);
     this.router.navigate(['fixtures']);
   }
 
   redirectToTeamsPage(sport:any) {
+    this.dataservice.changeUserId(this.user_details);
     this.dataservice.changeSport(sport);
     this.router.navigate(['create-join-team']);
   }

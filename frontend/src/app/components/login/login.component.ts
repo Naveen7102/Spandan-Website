@@ -47,6 +47,7 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['sports']);
         },
         error: (e) => {
+          alert("invalid login");
           console.error(e);
         }
       });
