@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/models/user.model';
+import { CreateJoinTeamService } from 'src/app/services/create-join-team.service';
 import { DataexchangeService } from 'src/app/services/dataexchange.service';
 
 @Component({
@@ -10,8 +11,14 @@ import { DataexchangeService } from 'src/app/services/dataexchange.service';
 export class CreateOrJointTeamComponent implements OnInit {
   sport_id: number;
   user_details: User;
+  displayTeamPlayers: boolean;
+  teamName: string;
+  players: Array<string>;
 
-  constructor(private dataservice: DataexchangeService) {
+  constructor(private dataservice: DataexchangeService, private createJoinService: CreateJoinTeamService) {
+    this.displayTeamPlayers = false;
+    this.teamName = '';
+    this.players = new Array<string>;
     this.sport_id = -1;
     this.user_details = {};
     this.dataservice.id.subscribe(data => {
@@ -25,6 +32,51 @@ export class CreateOrJointTeamComponent implements OnInit {
 
   ngOnInit(): void {
 
+  }
+
+  onTeamChange(UpdatedValue: string):void{
+		this.teamName = UpdatedValue;
+	}
+
+  searchTeam(name: string){
+
+    const data = {
+      sport_id: this.sport_id,
+      team: this.teamName
+    };
+    console.log(data);
+    this.createJoinService.searchTeam(data)
+      .subscribe({
+        next: (data:Array<string>) => {
+          this.players = data;
+          this.displayTeamPlayers = true;
+        },
+        error: (e) => {
+          alert("invalid login");
+          console.error(e);
+        }
+      });
+    this.teamName = '';
+  }
+
+  createTeam(name: string){
+    const data = {
+      sport_id: this.sport_id,
+      name: this.teamName
+    };
+    console.log(data);
+    this.createJoinService.searchTeam(data)
+    .subscribe({
+      next: (data: string) => {
+        this.displayTeamPlayers = false;
+        alert(data);
+      },
+      error: (e) => {
+        alert("Team not Found");
+        console.error(e);
+      }
+    });
+    this.teamName = '';
   }
 
   // changeSport(name: string) {

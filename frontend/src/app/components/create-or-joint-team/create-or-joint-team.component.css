@@ -65,3 +65,12 @@ div {
 .add-rule{
     text-align: center;
 }
+
+.get-teams{
+    margin: 5% 15% 0% 15%;
+    text-align: center;
+    border-width: medium;
+    box-shadow: 5px 5px gray;
+    border-style: solid;
+    border-radius: 2px;
+}

@@ -37,39 +37,33 @@
   </nav>
   
     <div class="create-join-team">
-        <input type="text" class="form-control search" placeholder="Search for a Team or Create a Team">
-        <button class="btn btn-primary">Search Team</button>
-        <button class="btn btn-primary">Create Team</button>
+        <input type="text" class="form-control search" [ngModel] ='teamName' (ngModelChange)='onTeamChange($event)' placeholder="Search for a Team or Create a Team">
+        <button class="btn btn-primary" (click)="searchTeam(teamName)">Search Team</button>
+        <button class="btn btn-primary" (click)="createTeam(teamName)">Create Team</button>
     </div>
 
-    <div class="join-team">
-        <div class="members-list">
-            <p class="btn btn-primary player col-sm-3">Player 1</p>
-            <p class="btn btn-primary player col-sm-3">Player 1</p>
-            <p class="btn btn-primary player col-sm-3">Player 1</p>
-            <p class="btn btn-primary player col-sm-3">Player 1</p>
-            <p class="btn btn-primary player col-sm-3">Player 1</p>
-            <p class="btn btn-primary player col-sm-3">Player 1</p>
-            <p class="btn btn-primary player col-sm-3">Player 1</p>
+    <div class="join-team" *ngIf="displayTeamPlayers">
+        <div class="members-list" *ngFor="let player of players;">
+            <p class="btn btn-primary player col-sm-3">player</p>
         </div>
         <button class="btn btn-primary">Join Team</button>
     </div>
 
-    <div class="create-join-team">
+    <div class="get-teams">
       <button class="btn btn-primary">Get Teams</button>
+
+      <div class="members-list">
+        <p class="btn btn-primary player col-sm-3">Player 1</p>
+        <p class="btn btn-primary player col-sm-3">Player 1</p>
+        <p class="btn btn-primary player col-sm-3">Player 1</p>
+        <p class="btn btn-primary player col-sm-3">Player 1</p>
+        <p class="btn btn-primary player col-sm-3">Player 1</p>
+        <p class="btn btn-primary player col-sm-3">Player 1</p>
+        <p class="btn btn-primary player col-sm-3">Player 1</p>
+      </div>
+
     </div>
 
-    <div class="join-team">
-      <div class="members-list">
-          <p class="btn btn-primary player col-sm-3">Player 1</p>
-          <p class="btn btn-primary player col-sm-3">Player 1</p>
-          <p class="btn btn-primary player col-sm-3">Player 1</p>
-          <p class="btn btn-primary player col-sm-3">Player 1</p>
-          <p class="btn btn-primary player col-sm-3">Player 1</p>
-          <p class="btn btn-primary player col-sm-3">Player 1</p>
-          <p class="btn btn-primary player col-sm-3">Player 1</p>
-      </div>
-    </div>
 
     <div class="join-team">
       <div class="members-list">
