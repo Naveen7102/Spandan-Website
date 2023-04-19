@@ -2,6 +2,7 @@ package com.spe.spandan.service;
 
 import com.spe.spandan.model.Message;
 import com.spe.spandan.model.TeamMembers;
+import com.spe.spandan.model.User;
 import com.spe.spandan.repository.TeamMembersRepository;
 import com.spe.spandan.repository.TeamsRepository;
 import com.spe.spandan.repository.UserRepository;
@@ -9,11 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.transaction.Transactional;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 
@@ -70,8 +68,6 @@ public class TeamMembersService {
 
     public ResponseEntity<ArrayList<String>> getPlayers(Integer sport_id, String team) {
         try{
-//            Integer sport_id = Integer.parseInt(requestMap.get("sport_id"));
-//            String team = requestMap.get("team");
             Integer team_id = teamsRepository.getTeamId(team);
 
             ArrayList<Integer> l = teamMembersRepository.getPlayers(sport_id, team_id);
@@ -87,5 +83,25 @@ public class TeamMembersService {
         }
         ArrayList<String> failed = new ArrayList<>();
         return new ResponseEntity<ArrayList<String>>(failed, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    public ResponseEntity<ArrayList<User>> getPlayersDetails(Integer sport_id, String team) {
+        try{
+            Integer team_id = teamsRepository.getTeamId(team);
+
+            ArrayList<Integer> l = teamMembersRepository.getPlayers(sport_id, team_id);
+            ArrayList<User> players = new ArrayList<>();
+            for(Integer i: l){
+                System.out.println(userRepository.getUserDetails(i).getUsername());
+                players.add(userRepository.getUserDetails(i));
+            }
+            return new ResponseEntity<ArrayList<User>>(players, HttpStatus.OK);
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        ArrayList<User> failed = new ArrayList<>();
+        return new ResponseEntity<ArrayList<User>>(failed, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }
