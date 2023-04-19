@@ -46,6 +46,8 @@ export class SportsListComponent {
     .subscribe({
       next: (data: Array<Sport>) => {
         this.sports = data;
+        this.sportsArr = new Array<Array<Sport>>;
+        this.sportsArr.push(new Array<Sport>);
         for( var i = 0; i < this.sports.length; i+=3)
         {
           var sublist = new Array<Sport>;
