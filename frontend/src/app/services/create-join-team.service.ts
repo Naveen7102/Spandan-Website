@@ -12,7 +12,7 @@ export class CreateJoinTeamService {
   constructor(private http: HttpClient) { }
 
   searchTeam(data: any): Observable<any>{
-    return this.http.get<any>(`${baseUrl}/teamMembers/getPlayers`,data);
+    return this.http.get<any>(`${baseUrl}/teamMembers/getPlayers?sport_id=${data.sport_id}&team=${data.team}`);
   }
 
   createTeam(data: any): Observable<string>{
