@@ -14,12 +14,12 @@ export class LoginComponent implements OnInit {
 
   email: string;
   password: string;
-  user_id: number;
+  user_details: User;
 
   constructor(private router: Router, private dataservice: DataexchangeService, private loginService: LoginService) {
     this.email = '';
     this.password = '';
-    this.user_id = -1;
+    this.user_details = {};
   }
 
   ngOnInit(): void {
@@ -31,21 +31,24 @@ export class LoginComponent implements OnInit {
   });
 
   onSubmit(): void{
-    console.log(this.email);
-    console.log(this.password);
-    const data:User = {};
 
-    this.dataservice.changeUserId(2);
+    const data = {
+      email: this.email,
+      password: this.password
+    };
+    console.log(data);
+    
 
     this.loginService.login(data)
       .subscribe({
         next: (data:User) => {
-          // User data line
+          this.dataservice.changeUserId(this.user_details);
+          this.router.navigate(['sports']);
         },
-        error: (e) => console.error(e)
+        error: (e) => {
+          console.error(e);
+        }
       });
-
-    this.router.navigate(['sports']);
 
   }
 

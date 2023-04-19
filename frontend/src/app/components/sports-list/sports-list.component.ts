@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { User } from 'src/app/models/user.model';
 import { DataexchangeService } from 'src/app/services/dataexchange.service';
 import { SportslistService } from 'src/app/services/sportslist.service';
 
@@ -14,23 +15,23 @@ export class SportsListComponent {
   sports: Array<string>;
   sportsArr: Array<Array<string>>;
   email: string = '';
-  user_id: number;
+  user_details: User;
 
   constructor(private router: Router, private dataservice: DataexchangeService, private sportsService: SportslistService) {
     this.sports = new Array<string>;
     this.sportsArr = new Array<Array<string>>;
     this.sportsArr.push(new Array<string>);
-    this.user_id = -1;
+    this.user_details = {};
     this.dataservice.id.subscribe(data=>{
-      this.user_id = data;
+      this.user_details = data;
     });
     console.log("sfdz");
-    console.log(this.user_id);
+    console.log(this.user_details);
   }
 
   ngOnInit(): void {
     this.getSports();
-    for( var i = 0; i<this.sports.length; i+=3)
+    for( var i = 0; i < this.sports.length; i+=3)
     {
       var sublist = new Array<string>;
       for(var j = 0; j < 3 && i+j < this.sports.length ; j+=1)
