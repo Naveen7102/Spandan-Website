@@ -1,6 +1,7 @@
 package com.spe.spandan.controller;
 
 import com.spe.spandan.model.Message;
+import com.spe.spandan.model.User;
 import com.spe.spandan.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -29,5 +30,17 @@ public class UserController {
             e.printStackTrace();
         }
         return new ResponseEntity<Message>(failed, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    @PostMapping(path = "user/login")
+    public ResponseEntity<User> login(@RequestBody(required = true) Map<String, String> requestMap) {
+        try{
+            return userService.login(requestMap);
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        User failed = new User();
+        return new ResponseEntity<User>(failed, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }
