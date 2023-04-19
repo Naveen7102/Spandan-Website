@@ -41,12 +41,12 @@
       <div class="row" *ngFor="let subsport of sportsArr; index as i">
         <div class="col-sm-6 col-md-4" *ngFor="let sport of subsport; index as j" >
           <div class="card sport" style="width: 18rem;">
-            <img class="card-img-top sports-img" [src]="'../../../assets/' + sport  + '.jpg'" alt="Card image cap">
+            <img class="card-img-top sports-img" [src]="'../../../assets/' + sport.name  + '.jpg'" alt="Card image cap">
             <div class="card-body">
-              <h5 class="card-title">{{sport}}</h5>
+              <h5 class="card-title">{{sport.name}}</h5>
               <div class="buttons">
-                <button class="btn btn-primary" (click)="redirectToFixturesPage(sport)">Fixtures</button>
-                <button href="#" class="btn btn-primary" (click)="redirectToTeamsPage(sport)">Create/Join a Team</button>
+                <button class="btn btn-primary" (click)="redirectToFixturesPage(sport.name)">Fixtures</button>
+                <button href="#" class="btn btn-primary" (click)="redirectToTeamsPage(sport.name)">Create/Join a Team</button>
               </div>
             </div>
           </div>
