@@ -28,20 +28,12 @@ export class SportsListComponent {
     });
     console.log("sfdz");
     console.log(this.user_details);
+    this.getSports();
+    console.log(this.sportsArr);
   }
 
   ngOnInit(): void {
-    this.getSports();
-    for( var i = 0; i < this.sports.length; i+=3)
-    {
-      var sublist = new Array<Sport>;
-      for(var j = 0; j < 3 && i+j < this.sports.length ; j+=1)
-      {
-        sublist.push(this.sports[i+j]);
-      }
-      this.sportsArr.push(sublist);
-    }
-    console.log(this.sportsArr);
+    
   }
 
   onMailChange(UpdatedValue: string):void
@@ -54,6 +46,15 @@ export class SportsListComponent {
     .subscribe({
       next: (data: Array<Sport>) => {
         this.sports = data;
+        for( var i = 0; i < this.sports.length; i+=3)
+        {
+          var sublist = new Array<Sport>;
+          for(var j = 0; j < 3 && i+j < this.sports.length ; j+=1)
+          {
+            sublist.push(this.sports[i+j]);
+          }
+          this.sportsArr.push(sublist);
+        }
       },
       error: (e) => console.error(e)
     });
@@ -78,6 +79,7 @@ export class SportsListComponent {
     .subscribe({
       next: (data:string) => {
         this.sport = '';
+        this.getSports();
       },
       error: (e) => console.error(e)
     });
