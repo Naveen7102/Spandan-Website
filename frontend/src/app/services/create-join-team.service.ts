@@ -25,8 +25,8 @@ export class CreateJoinTeamService {
     return this.http.post<string>(`${baseUrl}/teamMembers/addMember`,data);
   }
 
-  getTeams(data: number): Observable<Array<Teams>>{
-    return this.http.get<Array<Teams>>(`${baseUrl}/teams/getTeams/${data}`);
+  getTeams(data: number): Observable<any>{
+    return this.http.get<any>(`${baseUrl}/teams/getTeams/${data}`);
   }
 
 }

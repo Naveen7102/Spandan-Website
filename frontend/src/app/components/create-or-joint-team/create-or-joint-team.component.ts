@@ -111,7 +111,8 @@ export class CreateOrJointTeamComponent implements OnInit {
   getTeamslist(){
     this.createJoinService.getTeams(this.sport_id)
     .subscribe({
-      next: (data: Array<Teams>) => {
+      next: (data: any) => {
+        console.log(data);
         this.getTeams = false;
         this.teamsList = data;
       },
