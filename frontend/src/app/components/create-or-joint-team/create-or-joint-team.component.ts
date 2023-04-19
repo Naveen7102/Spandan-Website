@@ -14,10 +14,12 @@ export class CreateOrJointTeamComponent implements OnInit {
   displayTeamPlayers: boolean;
   teamName: string;
   players: Array<string>;
+  getTeams:boolean;
 
   constructor(private dataservice: DataexchangeService, private createJoinService: CreateJoinTeamService) {
     this.displayTeamPlayers = false;
     this.teamName = '';
+    this.getTeams = true;
     this.players = new Array<string>;
     this.sport_id = -1;
     this.user_details = {};
@@ -65,7 +67,7 @@ export class CreateOrJointTeamComponent implements OnInit {
       name: this.teamName
     };
     console.log(data);
-    this.createJoinService.searchTeam(data)
+    this.createJoinService.createTeam(data)
     .subscribe({
       next: (data: string) => {
         this.displayTeamPlayers = false;
@@ -77,6 +79,10 @@ export class CreateOrJointTeamComponent implements OnInit {
       }
     });
     this.teamName = '';
+  }
+
+  getTeamslist(){
+
   }
 
   // changeSport(name: string) {

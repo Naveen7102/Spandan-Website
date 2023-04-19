@@ -66,11 +66,18 @@ div {
     text-align: center;
 }
 
+.teams-list{
+    margin-top: 3%;
+    text-align: center;
+}
+
 .get-teams{
     margin: 5% 15% 0% 15%;
+    padding-top: 2%;
     text-align: center;
     border-width: medium;
-    box-shadow: 5px 5px gray;
+    box-shadow: 3px 3px gray;
     border-style: solid;
     border-radius: 2px;
+    border-color:lightslategray;
 }

@@ -49,10 +49,11 @@
         <button class="btn btn-primary">Join Team</button>
     </div>
 
-    <div class="get-teams">
-      <button class="btn btn-primary">Get Teams</button>
+    <div class="teams-list">
 
-      <div class="members-list">
+      <button class="btn btn-primary" (click)="getTeamslist()" *ngIf="getTeams">Get Teams</button>
+
+      <div class="get-teams" *ngIf="!getTeams">
         <p class="btn btn-primary player col-sm-3">Player 1</p>
         <p class="btn btn-primary player col-sm-3">Player 1</p>
         <p class="btn btn-primary player col-sm-3">Player 1</p>
