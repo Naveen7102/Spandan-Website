@@ -42,6 +42,7 @@ export class LoginComponent implements OnInit {
     this.loginService.login(data)
       .subscribe({
         next: (data:User) => {
+          this.user_details = data;
           this.dataservice.changeUserId(this.user_details);
           this.router.navigate(['sports']);
         },
