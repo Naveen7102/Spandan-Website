@@ -58,4 +58,26 @@ public class UserService {
         }
         return false;
     }
+
+    public ResponseEntity<User> login(Map<String, String> requestMap) {
+        try{
+            String email = requestMap.get("email");
+            String password = requestMap.get("password");
+
+            User u = userRepository.getUser(email);
+            if(u.getPassword().equals(password)) {
+                return new ResponseEntity<User>(u, HttpStatus.OK);
+            }
+            else{
+                User failed = new User();
+                return new ResponseEntity<User>(failed, HttpStatus.BAD_REQUEST);
+            }
+
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        User failed = new User();
+        return new ResponseEntity<User>(failed, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
 }
