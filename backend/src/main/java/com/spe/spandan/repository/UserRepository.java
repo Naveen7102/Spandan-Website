@@ -13,4 +13,7 @@ public interface UserRepository extends JpaRepository<User, Integer>{
     @Modifying
     @Query(value = "UPDATE user u SET u.user_type = \"SPOC\" where u.email = :email ", nativeQuery = true)
     void updateSPOC(@Param("email") String email);
+
+    @Query(value = "SELECT u.username from user u where u.id = :pid", nativeQuery = true)
+    String getName(@Param("pid") Integer pid);
 }

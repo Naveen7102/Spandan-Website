@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Map;
 
 
@@ -53,5 +54,18 @@ public class TeamsService {
             return true;
         }
         return false;
+    }
+
+    public ResponseEntity<ArrayList<Teams>> getTeams(Integer sport_id) {
+        try{
+            ArrayList<Teams> t = teamsRepository.getTeams(sport_id);
+            return new ResponseEntity<ArrayList<Teams>>(t, HttpStatus.OK);
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        ArrayList<Teams> failed = new ArrayList<>();
+        return new ResponseEntity<ArrayList<Teams>>(failed, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }

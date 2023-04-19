@@ -31,4 +31,17 @@ public class TeamMembersController {
         }
         return new ResponseEntity<Message>(failed, HttpStatus.INTERNAL_SERVER_ERROR);
     }
+
+    @GetMapping(path = "teamMembers/getPlayers")
+    public ResponseEntity<ArrayList<String>> getPlayers(@RequestParam(required = true) Integer sport_id, @RequestParam(required = true) String team){
+        try{
+//            System.out.println(requestMap);
+            return teamMembersService.getPlayers(sport_id,team);
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        ArrayList<String> failed = new ArrayList<>();
+        return new ResponseEntity<ArrayList<String>>(failed, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
 }

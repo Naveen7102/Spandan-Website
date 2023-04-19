@@ -22,7 +22,7 @@ export class CreateJoinTeamService {
 
   joinTeam(data: any): Observable<string>{
     console.log(data);
-    return this.http.post<string>(`${baseUrl}/teamsMembers/addMember`,data);
+    return this.http.post<string>(`${baseUrl}/teamMembers/addMember`,data);
   }
 
   getTeams(data: number): Observable<Array<Teams>>{
