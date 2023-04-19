@@ -55,22 +55,15 @@
 
       <div class="get-teams" *ngIf="!getTeams">
         <div *ngFor="let team of teamsList;">
-          <button class="btn btn-primary player col-sm-3">{{team.name}}</button>
+          <button class="btn btn-primary player col-sm-3" (click)="getTeamPlayers(team.name)">{{team.name}}</button>
         </div>
       </div>
 
     </div>
 
-
     <div class="join-team">
-      <div class="members-list">
-          <p class="btn btn-primary player col-sm-3">Player 1</p>
-          <p class="btn btn-primary player col-sm-3">Player 1</p>
-          <p class="btn btn-primary player col-sm-3">Player 1</p>
-          <p class="btn btn-primary player col-sm-3">Player 1</p>
-          <p class="btn btn-primary player col-sm-3">Player 1</p>
-          <p class="btn btn-primary player col-sm-3">Player 1</p>
-          <p class="btn btn-primary player col-sm-3">Player 1</p>
+      <div class="members-list" *ngFor="let player of playersList;">
+          <p class="btn btn-primary player col-sm-3">{{player.username}} - {{player.phone_no}}</p>
       </div>
     </div>
     

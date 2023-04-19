@@ -29,4 +29,8 @@ export class CreateJoinTeamService {
     return this.http.get<any>(`${baseUrl}/teams/getTeams/${data}`);
   }
 
+  getTeamPlayers(data: any): Observable<any>{
+    return this.http.get<any>(`${baseUrl}/teamMembers/getPlayers?sport_id=${data.sport_id}&team=${data.team}`);
+  }
+
 }

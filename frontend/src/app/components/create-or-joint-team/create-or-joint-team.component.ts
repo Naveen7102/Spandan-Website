@@ -18,11 +18,13 @@ export class CreateOrJointTeamComponent implements OnInit {
   getTeams:boolean;
   joinTeamName: string;
   teamsList: Array<Teams>;
+  playersList: Array<User>;
 
   constructor(private dataservice: DataexchangeService, private createJoinService: CreateJoinTeamService) {
     this.displayTeamPlayers = false;
     this.teamName = '';
     this.joinTeamName = '';
+    this.playersList = new Array<User>;
     this.getTeams = true;
     this.players = new Array<string>;
     this.teamsList = new Array<Teams>;
@@ -115,6 +117,24 @@ export class CreateOrJointTeamComponent implements OnInit {
         console.log(data);
         this.getTeams = false;
         this.teamsList = data;
+      },
+      error: (e) => {
+        alert("Team not Found");
+        console.error(e);
+      }
+    });
+  }
+
+  getTeamPlayers(teamname: any){
+    const data = {
+      sport_id: this.sport_id,
+      name: teamname
+    };
+    this.createJoinService.getTeamPlayers(data)
+    .subscribe({
+      next: (data: Array<User>) => {
+        console.log(data);
+        this.playersList = data;
       },
       error: (e) => {
         alert("Team not Found");
