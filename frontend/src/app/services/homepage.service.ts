@@ -13,13 +13,6 @@ export class HomepageService {
 
   getStartDate(): Observable<any>{
     return this.http.get<any>(`${baseUrl}/date/getDate`);
-  }
-
-  setStartDate(date: any): Observable<string>{
-    console.log(date);
-    return this.http.post<string>(`${baseUrl}/date/addStartDate`, date);
-  }
-
-  
+  }  
 
 }

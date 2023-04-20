@@ -19,12 +19,15 @@ export class CreateOrJointTeamComponent implements OnInit {
   joinTeamName: string;
   teamsList: Array<Teams>;
   playersList: Array<User>;
+  rulesList: Array<string>;
+  rule: string = '';
 
   constructor(private dataservice: DataexchangeService, private createJoinService: CreateJoinTeamService) {
     this.displayTeamPlayers = false;
     this.teamName = '';
     this.joinTeamName = '';
     this.playersList = new Array<User>;
+    this.rulesList = new Array<string>;
     this.getTeams = true;
     this.players = new Array<string>;
     this.teamsList = new Array<Teams>;
@@ -37,6 +40,7 @@ export class CreateOrJointTeamComponent implements OnInit {
       this.sport_id = data;
     });
     console.log(this.sport_id);
+    this.getRulesList();
   }
 
   ngOnInit(): void {
@@ -45,6 +49,10 @@ export class CreateOrJointTeamComponent implements OnInit {
 
   onTeamChange(UpdatedValue: string):void{
 		this.teamName = UpdatedValue;
+	}
+
+  onRuleChange(UpdatedValue: string):void{
+		this.rule = UpdatedValue;
 	}
 
   searchTeam(name: string){
@@ -138,6 +146,39 @@ export class CreateOrJointTeamComponent implements OnInit {
       },
       error: (e) => {
         alert("Team not Found");
+        console.error(e);
+      }
+    });
+  }
+
+  getRulesList(){
+    this.createJoinService.getRules(this.sport_id)
+    .subscribe({
+      next: (data: any) => {
+        console.log(data);
+        this.rulesList = data;
+      },
+      error: (e) => {
+        alert("Rules not Found");
+        console.error(e);
+      }
+    });
+  }
+
+  addRule(rule: string){
+    const data = {
+      sport_id: this.sport_id,
+      rule: rule
+    };
+    this.createJoinService.addRule(data)
+    .subscribe({
+      next: (data: any) => {
+        console.log(data);
+        this.rulesList = data;
+        alert("rule added");
+      },
+      error: (e) => {
+        alert("Rules not Found");
         console.error(e);
       }
     });

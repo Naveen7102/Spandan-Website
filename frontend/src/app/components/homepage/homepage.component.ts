@@ -9,7 +9,7 @@ import { HomepageService } from 'src/app/services/homepage.service';
 export class HomepageComponent implements OnInit {
   targetDate: Date = new Date('2023-04-30');
   // date: Date = new Date('2023-04-30');
-  date : string = '';
+  
   
   days: number = 0;
   hours: number = 0;
@@ -44,25 +44,5 @@ export class HomepageComponent implements OnInit {
         error: (e) => console.error(e)
       });
   }
-
-  onDateChange(UpdatedValue: string):void
-	{
-		this.date = UpdatedValue;
-	}
-
-  SetDate(date: string): void{
-    const data = {
-      date : date
-    }
-    this.homepageservice.setStartDate(data)
-      .subscribe({
-        next: (data:string) => {
-          this.targetDate = new Date(date);
-        },
-        error: (e) => console.error(e)
-      });
-  }
-
-  
 
 }

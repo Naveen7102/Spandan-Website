@@ -17,6 +17,7 @@ export class SportsListComponent {
   sportsArr: Array<Array<Sport>>;
   email: string = '';
   user_details: User;
+  date : string = '';
 
   constructor(private router: Router, private dataservice: DataexchangeService, private sportsService: SportslistService) {
     this.sports = new Array<Sport>;
@@ -39,6 +40,11 @@ export class SportsListComponent {
   onMailChange(UpdatedValue: string):void
 	{
 		this.email = UpdatedValue;
+	}
+
+  onDateChange(UpdatedValue: string):void
+	{
+		this.date = UpdatedValue;
 	}
 
   getSports(){
@@ -93,6 +99,20 @@ export class SportsListComponent {
     this.sportsService.addSpoc(email)
       .subscribe({
         next: (data:string) => {
+        },
+        error: (e) => console.error(e)
+      });
+  }
+
+  
+  SetDate(date: string): void{
+    const data = {
+      date : date
+    }
+    this.sportsService.setStartDate(data)
+      .subscribe({
+        next: (data:string) => {
+
         },
         error: (e) => console.error(e)
       });

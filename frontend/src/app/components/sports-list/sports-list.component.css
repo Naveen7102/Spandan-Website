@@ -96,7 +96,11 @@ div {
 .add-sport{
     margin: 3% 15% 0% 15%;
     text-align: center;
-    
+}
+
+.set-date{
+    margin: 3% 15% 0% 15%;
+    text-align: center;
 }
 
 .search{

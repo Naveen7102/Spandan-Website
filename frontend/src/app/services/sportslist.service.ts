@@ -24,4 +24,9 @@ export class SportslistService {
     return this.http.post<string>(`${baseUrl}/user/updateSPOC`, email);
   }
 
+  setStartDate(date: any): Observable<string>{
+    console.log(date);
+    return this.http.post<string>(`${baseUrl}/date/addStartDate`, date);
+  }
+
 }

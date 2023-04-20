@@ -67,17 +67,15 @@
       </div>
     </div>
     
-    <div class="border border-secondary rounded about-rules">
+    <div class="about-rules">
         <h4>Rules and About the Game</h4>
-        <ol class="rules">
-            <li>Item 1</li>
-            <li>Item 2</li>
-            <li>Item 3</li>
+        <ol class="rules" *ngFor="let rule of rulesList;">
+            <li>{{rule}}</li>
         </ol>
 
         <div class="add-rule">
-           <input type="text" class="form-control search" placeholder="Enter a Rule">
-            <button class="btn btn-primary">Add Rule</button>
+           <input type="text" [ngModel] ='rule' (ngModelChange)='onRuleChange($event)' class="form-control search" placeholder="Enter a Rule">
+            <button class="btn btn-primary" (click)="addRule(rule)">Add Rule</button>
         </div> 
     </div>
 
