@@ -58,7 +58,7 @@ export class FixturesComponent implements OnInit  {
       sport_id: this.sport_id,
       team1: this.team1,
       team2: this.team2,
-      time: this.date + " " + this.time,
+      time: this.date + " " + this.time + ":00",
     }
     console.log(data);
     this.fixtureService.addFixture(data)

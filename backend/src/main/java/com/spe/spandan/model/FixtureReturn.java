@@ -4,6 +4,9 @@ import javax.persistence.Column;
 import java.sql.Timestamp;
 
 public class FixtureReturn {
+
+    private Integer id;
+
     private String sport;
 
     private String team1;
@@ -16,7 +19,8 @@ public class FixtureReturn {
 
     private Timestamp time;
 
-    public FixtureReturn(String sport, String team1, String team2, String winner, String result, Timestamp time) {
+    public FixtureReturn(Integer id, String sport, String team1, String team2, String winner, String result, Timestamp time) {
+        this.id = id;
         this.sport = sport;
         this.team1 = team1;
         this.team2 = team2;
@@ -26,6 +30,14 @@ public class FixtureReturn {
     }
 
     public FixtureReturn() {
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getSport() {

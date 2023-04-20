@@ -50,7 +50,7 @@ public class TeamMembersService {
     private TeamMembers createTeamMemberFromMap(Map<String, String> requestMap) {
         TeamMembers t = new TeamMembers();
 
-        t.setTeam_id(teamsRepository.getTeamId(requestMap.get("team")));
+        t.setTeam_id(teamsRepository.getTeamId(requestMap.get("team"),Integer.parseInt(requestMap.get("sport_id"))));
         t.setParticipant_id(Integer.parseInt(requestMap.get("participant_id")));
         t.setSport_id(Integer.parseInt(requestMap.get("sport_id")));
 
@@ -68,7 +68,7 @@ public class TeamMembersService {
 
     public ResponseEntity<ArrayList<String>> getPlayers(Integer sport_id, String team) {
         try{
-            Integer team_id = teamsRepository.getTeamId(team);
+            Integer team_id = teamsRepository.getTeamId(team, sport_id);
 
             ArrayList<Integer> l = teamMembersRepository.getPlayers(sport_id, team_id);
             ArrayList<String> players = new ArrayList<>();
@@ -87,7 +87,7 @@ public class TeamMembersService {
 
     public ResponseEntity<ArrayList<User>> getPlayersDetails(Integer sport_id, String team) {
         try{
-            Integer team_id = teamsRepository.getTeamId(team);
+            Integer team_id = teamsRepository.getTeamId(team,sport_id);
 
             ArrayList<Integer> l = teamMembersRepository.getPlayers(sport_id, team_id);
             ArrayList<User> players = new ArrayList<>();

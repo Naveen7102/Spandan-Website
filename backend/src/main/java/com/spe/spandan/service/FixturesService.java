@@ -57,8 +57,8 @@ public class FixturesService {
         f.setSport_id(Integer.parseInt(requestMap.get("sport_id")));
         f.setResult("-");
         f.setTime(Timestamp.valueOf(requestMap.get("time")));
-        f.setTeam1_id(Integer.parseInt(requestMap.get("team1_id")));
-        f.setTeam2_id(Integer.parseInt(requestMap.get("team2_id")));
+        f.setTeam1_id(teamsRepository.getTeamId(requestMap.get("team1"),Integer.parseInt(requestMap.get("sport_id"))));
+        f.setTeam2_id(teamsRepository.getTeamId(requestMap.get("team2"),Integer.parseInt(requestMap.get("sport_id"))));
         f.setWinner(-1);
 
         return f;
@@ -66,7 +66,7 @@ public class FixturesService {
 
     private boolean validateAddFixture(Map<String, String> requestMap) {
         System.out.println(requestMap);
-        if(requestMap.containsKey("sport_id") && requestMap.containsKey("team1_id") && requestMap.containsKey("team2_id") && requestMap.containsKey("time"))
+        if(requestMap.containsKey("sport_id") && requestMap.containsKey("team1") && requestMap.containsKey("team2") && requestMap.containsKey("time"))
         {
             return true;
         }
@@ -83,8 +83,9 @@ public class FixturesService {
                 fr.setTime(f.getTime());
                 fr.setResult(f.getResult());
                 fr.setSport(sport);
-                fr.setTeam1(teamsRepository.getTeamName(f.getTeam1_id()));
-                fr.setTeam2(teamsRepository.getTeamName(f.getTeam2_id()));
+                fr.setTeam1(teamsRepository.getTeamName(f.getTeam1_id(),f.getSport_id()));
+                fr.setTeam2(teamsRepository.getTeamName(f.getTeam2_id(),f.getSport_id()));
+                fr.setId(f.getId());
                 if(f.getWinner() == -1)
                 {
                     fr.setWinner("-");
@@ -119,8 +120,23 @@ public class FixturesService {
             Integer id = Integer.parseInt(requestMap.get("id"));
             String winner = requestMap.get("winner");
             String result = requestMap.get("result");
-            Integer winner_id = teamsRepository.getTeamId(winner);
+            Integer sport_id = Integer.parseInt(requestMap.get("sport_id"));
+            Integer winner_id = teamsRepository.getTeamId(winner,sport_id);
             fixturesRepository.updateResult(result,winner_id,id);
+            return new ResponseEntity<Message>(success, HttpStatus.OK);
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        return new ResponseEntity<Message>(failed, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    public ResponseEntity<Message> deleteFixture(Integer id) {
+        Message success = new Message("Fixture deleted Successfully.");
+        Message failed = new Message("Something Went Wrong at Fixture Service.");
+        try{
+            fixturesRepository.deleteById(id);
             return new ResponseEntity<Message>(success, HttpStatus.OK);
         }
         catch (Exception e)
