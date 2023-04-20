@@ -33,6 +33,7 @@ export class FixturesComponent implements OnInit  {
     this.dataservice.name.subscribe(data=>{
       this.sport_id = data;
     });
+    this.getFixtures();
     console.log(this.sport_id);
   }
 
@@ -65,6 +66,7 @@ export class FixturesComponent implements OnInit  {
       .subscribe({
         next: (data:any) => {
           console.log(data.message);
+          this.getFixtures();
           alert("Success");
         },
         error: (e) => {
@@ -86,6 +88,7 @@ export class FixturesComponent implements OnInit  {
       .subscribe({
         next: (data:any) => {
           console.log(data.message);
+          this.getFixtures();
           alert("Success");
         },
         error: (e) => {
