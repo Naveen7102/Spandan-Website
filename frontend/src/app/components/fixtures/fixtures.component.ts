@@ -77,6 +77,7 @@ export class FixturesComponent implements OnInit  {
   addResult(){
     const data = {
       id: this.fixtures[this.fixtureNumber].id,
+      sport_id: this.sport_id,
       winner: this.winner,
       result: this.result
     }
