@@ -38,9 +38,9 @@ public class Fixtures {
     private String result;
 
     @Column(name = "time")
-    private Timestamp time;
+    private String time;
 
-    public Fixtures(Integer sport_id, Integer team1_id, Integer team2_id, Integer winner, String result, Timestamp time) {
+    public Fixtures(Integer sport_id, Integer team1_id, Integer team2_id, Integer winner, String result, String time) {
         this.sport_id = sport_id;
         this.team1_id = team1_id;
         this.team2_id = team2_id;
@@ -100,11 +100,11 @@ public class Fixtures {
         this.result = result;
     }
 
-    public Timestamp getTime() {
+    public String getTime() {
         return time;
     }
 
-    public void setTime(Timestamp time) {
+    public void setTime(String time) {
         this.time = time;
     }
 }

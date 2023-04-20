@@ -1,6 +1,5 @@
 package com.spe.spandan.service;
 
-import com.spe.spandan.model.FixtureList;
 import com.spe.spandan.model.FixtureReturn;
 import com.spe.spandan.model.Fixtures;
 import com.spe.spandan.model.Message;
@@ -15,7 +14,6 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.sql.Timestamp;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 
@@ -56,7 +54,7 @@ public class FixturesService {
 
         f.setSport_id(Integer.parseInt(requestMap.get("sport_id")));
         f.setResult("-");
-        f.setTime(Timestamp.valueOf(requestMap.get("time")));
+        f.setTime(requestMap.get("time"));
         f.setTeam1_id(teamsRepository.getTeamId(requestMap.get("team1"),Integer.parseInt(requestMap.get("sport_id"))));
         f.setTeam2_id(teamsRepository.getTeamId(requestMap.get("team2"),Integer.parseInt(requestMap.get("sport_id"))));
         f.setWinner(-1);
@@ -73,16 +71,16 @@ public class FixturesService {
         return false;
     }
 
-    public ResponseEntity<FixtureList> getFixtures(String sport) {
+    public ResponseEntity<ArrayList<FixtureReturn>> getFixtures(Integer sport_id) {
         try {
-            Integer sport_id = sportsRepository.getSportId(sport);
-            List<Fixtures> fixtures = fixturesRepository.getFixturesbySport(sport_id);
-            List<FixtureReturn> fList = new ArrayList<>();
+            ArrayList<Fixtures> fixtures = fixturesRepository.getFixturesbySport(sport_id);
+            System.out.println(fixtures.toString());
+            ArrayList<FixtureReturn> fList = new ArrayList<>();
             for (Fixtures f : fixtures) {
                 FixtureReturn fr = new FixtureReturn();
                 fr.setTime(f.getTime());
                 fr.setResult(f.getResult());
-                fr.setSport(sport);
+                fr.setSport(sportsRepository.getSportName(sport_id));
                 fr.setTeam1(teamsRepository.getTeamName(f.getTeam1_id(),f.getSport_id()));
                 fr.setTeam2(teamsRepository.getTeamName(f.getTeam2_id(),f.getSport_id()));
                 fr.setId(f.getId());
@@ -101,15 +99,14 @@ public class FixturesService {
 
                 fList.add(fr);
             }
-            FixtureList fl = new FixtureList(fList);
-            return new ResponseEntity<FixtureList>(fl, HttpStatus.OK);
+            return new ResponseEntity<ArrayList<FixtureReturn>>(fList, HttpStatus.OK);
         }
         catch (Exception e)
         {
             e.printStackTrace();
         }
-        FixtureList fl = new FixtureList();
-        return new ResponseEntity<FixtureList>(fl, HttpStatus.INTERNAL_SERVER_ERROR);
+        ArrayList<FixtureReturn> fl = new ArrayList<FixtureReturn>();
+        return new ResponseEntity<ArrayList<FixtureReturn>>(fl, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     @Transactional

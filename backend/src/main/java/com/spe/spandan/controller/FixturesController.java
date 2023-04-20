@@ -1,6 +1,6 @@
 package com.spe.spandan.controller;
 
-import com.spe.spandan.model.FixtureList;
+import com.spe.spandan.model.FixtureReturn;
 import com.spe.spandan.model.Message;
 import com.spe.spandan.service.FixturesService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.Map;
 
 @CrossOrigin(origins = "*")
@@ -31,15 +32,15 @@ public class FixturesController {
     }
 
     @GetMapping(path = "fixtures/getFixtures/{sport}")
-    public ResponseEntity<FixtureList> getFixtures(@PathVariable String sport){
-        FixtureList failed = new FixtureList();
+    public ResponseEntity<ArrayList<FixtureReturn>> getFixtures(@PathVariable Integer sport){
+        ArrayList<FixtureReturn> failed = new ArrayList<FixtureReturn>();
         try{
             return fixturesService.getFixtures(sport);
         }
         catch(Exception e){
             e.printStackTrace();
         }
-        return new ResponseEntity<FixtureList>(failed, HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<ArrayList<FixtureReturn>>(failed, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     @PostMapping(path = "fixtures/updateResult")

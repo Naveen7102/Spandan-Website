@@ -27,4 +27,8 @@ export class FixturesService {
     return this.http.delete<any>(`${baseUrl}/fixtures/deleteFixture/${fixture_id}`);
   }
 
+  getTeams(data: number): Observable<any>{
+    return this.http.get<any>(`${baseUrl}/teams/getTeams/${data}`);
+  }
+
 }

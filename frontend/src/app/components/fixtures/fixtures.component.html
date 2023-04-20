@@ -51,7 +51,7 @@
       </thead>
       <tbody>
         <tr class="table-row" *ngFor="let fixture of fixtures; index as i">
-          <th scope="row">{{i}}</th>
+          <th scope="row">{{i+1}}</th>
           <th scope="col" class="text">{{fixture.team1}}</th>
           <th scope="col" class="text">{{fixture.team2}}</th>
           <th scope="col" class="text">{{fixture.time}}</th>
@@ -128,6 +128,18 @@
 
   </div>
   
+  <div class="teams-list">
+
+    <button class="btn btn-primary" (click)="getTeamslist()" *ngIf="getTeams">Get Teams</button>
+
+    <div class="get-teams" *ngIf="!getTeams">
+      <div *ngFor="let team of teamsList;" class="col-sm-3 team-div">
+        <button class="btn btn-primary player" >{{team.name}}</button>
+      </div>
+    </div>
+
+  </div>
+
   <div class="border border-secondary rounded add-rule">
     <h5>Add a fixture</h5>
     <form (ngSubmit)="addFixture()">

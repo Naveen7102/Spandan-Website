@@ -17,9 +17,9 @@ public class FixtureReturn {
 
     private String result;
 
-    private Timestamp time;
+    private String time;
 
-    public FixtureReturn(Integer id, String sport, String team1, String team2, String winner, String result, Timestamp time) {
+    public FixtureReturn(Integer id, String sport, String team1, String team2, String winner, String result, String time) {
         this.id = id;
         this.sport = sport;
         this.team1 = team1;
@@ -80,11 +80,11 @@ public class FixtureReturn {
         this.result = result;
     }
 
-    public Timestamp getTime() {
+    public String getTime() {
         return time;
     }
 
-    public void setTime(Timestamp time) {
+    public void setTime(String time) {
         this.time = time;
     }
 }

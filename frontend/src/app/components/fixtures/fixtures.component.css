@@ -87,3 +87,31 @@ div {
     width:50px;
     height: 50px;
 }
+
+.teams-list{
+    margin-top: 3%;
+    text-align: center;
+}
+
+.get-teams{
+    margin: 5% 15% 0% 15%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    text-align: center;
+    border-width: medium;
+    box-shadow: 3px 3px gray;
+    border-style: solid;
+    border-radius: 2px;
+    border-color:lightslategray;
+}
+
+.player{
+    background-color:cadetblue;
+    display: inline-block;
+    color: white;
+    margin: 2% 3%;
+}
+
+.team-div{
+    display: inline-block;
+}

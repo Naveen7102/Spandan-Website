@@ -1,5 +1,6 @@
 import { Component, OnInit  } from '@angular/core';
 import { Fixture } from 'src/app/models/fixture.model';
+import { Teams } from 'src/app/models/teams.model';
 import { User } from 'src/app/models/user.model';
 import { DataexchangeService } from 'src/app/services/dataexchange.service';
 import { FixturesService } from 'src/app/services/fixtures.service';
@@ -21,11 +22,15 @@ export class FixturesComponent implements OnInit  {
   result: string = '';
   date: string = '';
   time: string = '';
+  getTeams:boolean;
+  teamsList: Array<Teams>;
 
   constructor(private dataservice: DataexchangeService, private fixtureService: FixturesService) {
     this.sport_id = -1;
     this.fixtureNumber = null;
     this.user_details = {};
+    this.teamsList = new Array<Teams>;
+    this.getTeams = true;
     this.fixtures = new Array<Fixture>;
     this.dataservice.id.subscribe(data => {
       this.user_details = data;
@@ -44,8 +49,9 @@ export class FixturesComponent implements OnInit  {
   getFixtures(){
     this.fixtureService.getFixtures(this.sport_id)
     .subscribe({
-      next: (data: Array<Fixture>) => {
+      next: (data: any) => {
         this.fixtures = data;
+        console.log(this.fixtures)
       },
       error: (e) => {
         alert("Failed to get fixtures for this sport");
@@ -98,11 +104,27 @@ export class FixturesComponent implements OnInit  {
       });
   }
 
+  getTeamslist(){
+    this.fixtureService.getTeams(this.sport_id)
+    .subscribe({
+      next: (data: any) => {
+        console.log(data);
+        this.getTeams = false;
+        this.teamsList = data;
+      },
+      error: (e) => {
+        alert("Team not Found");
+        console.error(e);
+      }
+    });
+  }
+
   deleteFixture(fixture_id: any){
     this.fixtureService.deleteFixture(fixture_id)
     .subscribe({
       next: (data: any) => {
         console.log(data);
+        this.getFixtures();
         alert("Success");
       },
       error: (e) => {
