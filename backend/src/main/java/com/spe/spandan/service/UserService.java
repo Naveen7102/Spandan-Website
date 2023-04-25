@@ -1,10 +1,16 @@
 package com.spe.spandan.service;
 
+import com.spe.spandan.JWT.CustomerUsersDetailsService;
+import com.spe.spandan.JWT.JwtFilter;
+import com.spe.spandan.JWT.JwtUtil;
 import com.spe.spandan.model.Message;
 import com.spe.spandan.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 //import org.springframework.web.multipart.MultipartFile;
 
@@ -19,6 +25,18 @@ public class UserService {
 
     @Autowired
     UserRepository userRepository;
+
+    @Autowired
+    CustomerUsersDetailsService customerUsersDetailsService;
+
+    @Autowired
+    AuthenticationManager authenticationManager;
+
+    @Autowired
+    JwtFilter jwtFilter;
+
+    @Autowired
+    JwtUtil jwtUtil;
 
     public ResponseEntity<Message> addUser(Map<String, String> requestMap) {
         Message success = new Message("User added Successfully.");
@@ -69,17 +87,26 @@ public class UserService {
 
     public ResponseEntity<User> login(Map<String, String> requestMap) {
         try{
-            String email = requestMap.get("email");
-            String password = requestMap.get("password");
+            Authentication auth = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(requestMap.get("email"),requestMap.get("password")));
 
-            User u = userRepository.getUser(email);
-            if(u.getPassword().equals(password)) {
-                return new ResponseEntity<User>(u, HttpStatus.OK);
+            if(auth.isAuthenticated()){
+                String token = jwtUtil.generateToken(customerUsersDetailsService.getUserDetail().getEmail(),customerUsersDetailsService.getUserDetail().getUserType());
+                customerUsersDetailsService.getUserDetail().setToken(token);
+                return new ResponseEntity<>(customerUsersDetailsService.getUserDetail(),HttpStatus.OK);
+
             }
-            else{
-                User failed = new User();
-                return new ResponseEntity<User>(failed, HttpStatus.BAD_REQUEST);
-            }
+
+//            String email = requestMap.get("email");
+//            String password = requestMap.get("password");
+//
+//            User u = userRepository.getUser(email);
+//            if(u.getPassword().equals(password)) {
+//                return new ResponseEntity<User>(u, HttpStatus.OK);
+//            }
+//            else{
+//                User failed = new User();
+//                return new ResponseEntity<User>(failed, HttpStatus.BAD_REQUEST);
+//            }
 
         }
         catch (Exception e){
