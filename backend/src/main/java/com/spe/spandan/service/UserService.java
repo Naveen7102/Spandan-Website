@@ -12,6 +12,7 @@ import com.spe.spandan.model.User;
 
 import javax.transaction.Transactional;
 import java.util.Map;
+import java.util.Objects;
 
 @Service
 public class UserService {
@@ -21,12 +22,18 @@ public class UserService {
 
     public ResponseEntity<Message> addUser(Map<String, String> requestMap) {
         Message success = new Message("User added Successfully.");
+        Message exists = new Message("User already exists");
         Message addFailed = new Message("Invalid Data");
         Message failed = new Message("Something Went Wrong at User Service.");
         try{
             if(validateAddUser(requestMap)){
-                userRepository.save(createUserFromMap(requestMap));
-                return new ResponseEntity<Message>(success, HttpStatus.OK);
+                if(Objects.isNull(userRepository.getUser(requestMap.get("email")))) {
+                    userRepository.save(createUserFromMap(requestMap));
+                    return new ResponseEntity<Message>(success, HttpStatus.OK);
+                }
+                else{
+                    return new ResponseEntity<Message>(exists, HttpStatus.BAD_REQUEST);
+                }
             }
             else {
                 return new ResponseEntity<Message>(addFailed, HttpStatus.BAD_REQUEST);
