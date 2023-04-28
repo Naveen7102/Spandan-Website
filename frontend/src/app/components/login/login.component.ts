@@ -43,6 +43,10 @@ export class LoginComponent implements OnInit {
       .subscribe({
         next: (data:User) => {
           this.user_details = data;
+          console.log(this.user_details);
+          
+          localStorage.setItem('token', this.user_details.token);
+          
           this.dataservice.changeUserId(this.user_details);
           this.router.navigate(['sports']);
         },

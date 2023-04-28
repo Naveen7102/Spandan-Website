@@ -13,20 +13,41 @@ export class SportslistService {
   constructor(private http: HttpClient) { }
 
   addSport(sport: string): Observable<string>{
-    return this.http.post<string>(`${baseUrl}/sport/addSport`,sport);
+    const token = localStorage.getItem('token');
+    const headers = {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    }
+    return this.http.post<string>(`${baseUrl}/sport/addSport`,sport,{headers});
   }
 
   getSports(): Observable<Array<Sport>>{
-    return this.http.get<Array<Sport>>(`${baseUrl}/sport/getSports`);
+    
+    const token = localStorage.getItem('token');
+    const headers = {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    }
+    return this.http.get<Array<Sport>>(`${baseUrl}/sport/getSports`,{headers});
   }
 
   addSpoc(email: string): Observable<string>{
-    return this.http.post<string>(`${baseUrl}/user/updateSPOC`, email);
+    const token = localStorage.getItem('token');
+    const headers = {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    }
+    return this.http.post<string>(`${baseUrl}/user/updateSPOC`, email,{headers});
   }
 
   setStartDate(date: any): Observable<string>{
+    const token = localStorage.getItem('token');
+    const headers = {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    }
     console.log(date);
-    return this.http.post<string>(`${baseUrl}/date/addStartDate`, date);
+    return this.http.post<string>(`${baseUrl}/date/addStartDate`, date,{headers});
   }
 
 }

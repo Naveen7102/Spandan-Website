@@ -4,5 +4,6 @@ export class User {
     username?: String;
     email?: String;
     phone_no?: String;
-    id?: any
+    id?: any;
+    token?: any;
 }

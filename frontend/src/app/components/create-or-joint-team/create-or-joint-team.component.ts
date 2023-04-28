@@ -3,6 +3,7 @@ import { Teams } from 'src/app/models/teams.model';
 import { User } from 'src/app/models/user.model';
 import { CreateJoinTeamService } from 'src/app/services/create-join-team.service';
 import { DataexchangeService } from 'src/app/services/dataexchange.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-or-joint-team',
@@ -22,7 +23,7 @@ export class CreateOrJointTeamComponent implements OnInit {
   rulesList: Array<string>;
   rule: string = '';
 
-  constructor(private dataservice: DataexchangeService, private createJoinService: CreateJoinTeamService) {
+  constructor(private router: Router, private dataservice: DataexchangeService, private createJoinService: CreateJoinTeamService) {
     this.displayTeamPlayers = false;
     this.teamName = '';
     this.joinTeamName = '';
@@ -182,6 +183,11 @@ export class CreateOrJointTeamComponent implements OnInit {
         console.error(e);
       }
     });
+  }
+
+  logout(){
+    localStorage.removeItem('token');
+    this.router.navigate(['login']);
   }
 
   // changeSport(name: string) {

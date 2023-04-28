@@ -12,33 +12,68 @@ export class CreateJoinTeamService {
   constructor(private http: HttpClient) { }
 
   searchTeam(data: any): Observable<any>{
-    return this.http.get<any>(`${baseUrl}/teamMembers/getPlayers?sport_id=${data.sport_id}&team=${data.team}`);
+    const token = localStorage.getItem('token');
+    const headers = {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    }
+    return this.http.get<any>(`${baseUrl}/teamMembers/getPlayers?sport_id=${data.sport_id}&team=${data.team}`, {headers});
   }
 
   createTeam(data: any): Observable<string>{
-    return this.http.post<string>(`${baseUrl}/teams/addTeam`,data);
+    const token = localStorage.getItem('token');
+    const headers = {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    }
+    return this.http.post<string>(`${baseUrl}/teams/addTeam`,data,{headers});
   }
 
   joinTeam(data: any): Observable<string>{
+    const token = localStorage.getItem('token');
+    const headers = {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    }
     console.log(data);
-    return this.http.post<string>(`${baseUrl}/teamMembers/addMember`,data);
+    return this.http.post<string>(`${baseUrl}/teamMembers/addMember`,data,{headers});
   }
 
   getTeams(data: number): Observable<any>{
-    return this.http.get<any>(`${baseUrl}/teams/getTeams/${data}`);
+    const token = localStorage.getItem('token');
+    const headers = {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    }
+    return this.http.get<any>(`${baseUrl}/teams/getTeams/${data}`, {headers});
   }
 
   getTeamPlayers(data: any): Observable<any>{
+    const token = localStorage.getItem('token');
+    const headers = {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    }
     console.log(data);
-    return this.http.get<any>(`${baseUrl}/teamMembers/getPlayersDetails?sport_id=${data.sport_id}&team=${data.name}`);
+    return this.http.get<any>(`${baseUrl}/teamMembers/getPlayersDetails?sport_id=${data.sport_id}&team=${data.name}`, {headers});
   }
 
   getRules(data: number): Observable<any>{
-    return this.http.get<any>(`${baseUrl}/sport/getRules/${data}`);
+    const token = localStorage.getItem('token');
+    const headers = {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    }
+    return this.http.get<any>(`${baseUrl}/sport/getRules/${data}`, {headers});
   }
 
   addRule(data: any): Observable<any>{
-    return this.http.post<any>(`${baseUrl}/sport/addRule`, data);
+    const token = localStorage.getItem('token');
+    const headers = {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    }
+    return this.http.post<any>(`${baseUrl}/sport/addRule`, data, {headers});
   }
 
 }
