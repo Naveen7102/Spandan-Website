@@ -20,14 +20,18 @@ public class TeamsService {
 
     public ResponseEntity<Message> addTeam(Map<String, String> requestMap) {
         Message success = new Message("Team added Successfully.");
-        Message addFailed = new Message("Invalid Data");
-        Message failed = new Message("Something Went Wrong at Teams Service.");
         try{
             if(validateAddTeam(requestMap)){
-                teamsRepository.save(createTeamFromMap(requestMap));
-                return new ResponseEntity<Message>(success, HttpStatus.OK);
+                Integer id = teamsRepository.getTeamId(requestMap.get("name"), Integer.parseInt(requestMap.get("sport_id")));
+                if(id == null){
+                    teamsRepository.save(createTeamFromMap(requestMap));
+                    return new ResponseEntity<Message>(success, HttpStatus.OK);
+                }
+                Message addFailed2 = new Message("Team already exists");
+                return new ResponseEntity<Message>(addFailed2, HttpStatus.BAD_REQUEST);
             }
             else {
+                Message addFailed = new Message("Invalid Data");
                 return new ResponseEntity<Message>(addFailed, HttpStatus.BAD_REQUEST);
             }
         }
@@ -35,6 +39,7 @@ public class TeamsService {
         {
             e.printStackTrace();
         }
+        Message failed = new Message("Something Went Wrong at Teams Service.");
         return new ResponseEntity<Message>(failed, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
