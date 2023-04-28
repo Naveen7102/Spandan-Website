@@ -14,7 +14,7 @@ import { Router } from '@angular/router';
 export class FixturesComponent implements OnInit  {
 
   sport_id: number;
-  user_details: User;
+  user_details: any;
   fixtures: Array<Fixture>;
   team1: string = '';
   team2: string = '';
@@ -39,6 +39,8 @@ export class FixturesComponent implements OnInit  {
     this.dataservice.name.subscribe(data=>{
       this.sport_id = data;
     });
+    // console.log(this.user_details);
+    // this.isAdminSpoc();
     this.getFixtures();
     console.log(this.sport_id);
   }
@@ -48,7 +50,8 @@ export class FixturesComponent implements OnInit  {
   }
 
   isAdminSpoc():boolean{
-    return this.user_details.user_type === "Admin" || this.user_details.user_type === "SPOC";
+    // console.log(this.user_details.userType);
+    return this.user_details.userType === "Admin" || this.user_details.userType === "SPOC";
   }
 
   getFixtures(){

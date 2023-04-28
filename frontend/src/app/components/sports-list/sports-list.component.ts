@@ -16,7 +16,7 @@ export class SportsListComponent {
   sports: Array<Sport>;
   sportsArr: Array<Array<Sport>>;
   email: string = '';
-  user_details: User;
+  user_details: any;
   date : string = '';
 
   constructor(private router: Router, private dataservice: DataexchangeService, private sportsService: SportslistService) {
@@ -38,7 +38,7 @@ export class SportsListComponent {
   }
 
   isAdmin() :boolean{
-    return this.user_details.user_type === "ADMIN";
+    return this.user_details.userType === "Admin";
   }
 
   onMailChange(UpdatedValue: string):void

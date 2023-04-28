@@ -28,17 +28,32 @@ public class TeamMembersService {
     UserRepository userRepository;
 
     public ResponseEntity<Message> addMember(Map<String, String> requestMap) {
-        Message success = new Message("Fixture added Successfully.");
-        Message addFailed = new Message("Invalid Data");
-        Message failed = new Message("Something Went Wrong at Fixture Service.");
+
         try{
             if(validateAddMember(requestMap)){
+                Integer team_id = teamsRepository.getTeamId(requestMap.get("team"),Integer.parseInt(requestMap.get("sport_id")));
+                Integer participant_id = Integer.parseInt(requestMap.get("participant_id"));
+                Integer sport_id = Integer.parseInt(requestMap.get("sport_id"));
+                TeamMembers tm = teamMembersRepository.getId(sport_id,team_id,participant_id);
 
-//                Integer id = teamMembersRepository.getId();
-                teamMembersRepository.save(createTeamMemberFromMap(requestMap));
-                return new ResponseEntity<Message>(success, HttpStatus.OK);
+                if(tm == null){
+                    teamMembersRepository.save(createTeamMemberFromMap(requestMap));
+                    Message success = new Message("Fixture added Successfully.");
+                    return new ResponseEntity<Message>(success, HttpStatus.OK);
+                }
+                else if(tm.getSport_id() == sport_id && tm.getParticipant_id() == participant_id) {
+                    if(tm.getTeam_id() == team_id){
+                        Message addFailed2 = new Message("Member already in another team");
+                        return new ResponseEntity<Message>(addFailed2, HttpStatus.BAD_REQUEST);
+                    }
+                    else{
+                        Message addFailed2 = new Message("Member already in same team");
+                        return new ResponseEntity<Message>(addFailed2, HttpStatus.BAD_REQUEST);
+                    }
+                }
             }
             else {
+                Message addFailed = new Message("Invalid Data");
                 return new ResponseEntity<Message>(addFailed, HttpStatus.BAD_REQUEST);
             }
         }
@@ -46,6 +61,7 @@ public class TeamMembersService {
         {
             e.printStackTrace();
         }
+        Message failed = new Message("Something Went Wrong at Fixture Service.");
         return new ResponseEntity<Message>(failed, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 

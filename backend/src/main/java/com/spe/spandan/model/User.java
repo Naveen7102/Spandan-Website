@@ -28,7 +28,7 @@ public class User {
     private String password;
 
     @Column(name = "user_type")
-    private String userType;
+    private String user_type;
 
     @Column(name = "email")
     private String email;
@@ -50,7 +50,7 @@ public class User {
     public User(String username, String password, String userType, String email, String phone_no) {
         this.username = username;
         this.password = password;
-        this.userType = userType;
+        this.user_type = userType;
         this.email = email;
         this.phone_no = phone_no;
     }
@@ -83,11 +83,11 @@ public class User {
     }
 
     public String getUserType() {
-        return userType;
+        return user_type;
     }
 
     public void setUserType(String userType) {
-        this.userType = userType;
+        this.user_type = userType;
     }
 
     public String getEmail() {

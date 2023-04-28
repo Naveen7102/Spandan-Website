@@ -49,6 +49,12 @@ div {
     margin: 2% 25% 3% 25%;
 }
 
+.page-title{
+    padding-top: 5%;
+    padding-bottom: 2%;
+    text-align: center;
+}
+
 .about-rules{
     margin: 1% 3%;
     border-width: medium;

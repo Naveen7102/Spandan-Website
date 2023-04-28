@@ -48,6 +48,7 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('token', this.user_details.token);
           
           this.dataservice.changeUserId(this.user_details);
+          console.log(this.user_details);
           this.router.navigate(['sports']);
         },
         error: (e) => {

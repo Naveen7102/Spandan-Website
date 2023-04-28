@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 })
 export class CreateOrJointTeamComponent implements OnInit {
   sport_id: number;
-  user_details: User;
+  user_details: any;
   displayTeamPlayers: boolean;
   teamName: string;
   players: Array<string>;
@@ -49,7 +49,7 @@ export class CreateOrJointTeamComponent implements OnInit {
   }
 
   isAdminSpoc() :boolean{
-    return this.user_details.user_type === "Admin" || this.user_details.user_type === "SPOC";
+    return this.user_details.userType === "Admin" || this.user_details.userType === "SPOC";
   }
 
   onTeamChange(UpdatedValue: string):void{
