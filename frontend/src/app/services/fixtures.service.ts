@@ -12,23 +12,48 @@ export class FixturesService {
   constructor(private http: HttpClient) { }
 
   getFixtures(sport_id: number): Observable<any>{
-    return this.http.get<any>(`${baseUrl}/fixtures/getFixtures/${sport_id}`);
+    const token = localStorage.getItem('token');
+    const headers = {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    }
+    return this.http.get<any>(`${baseUrl}/fixtures/getFixtures/${sport_id}`,{headers});
   }
 
   addFixture(data: any){
-    return this.http.post<any>(`${baseUrl}/fixtures/addFixture`, data);
+    const token = localStorage.getItem('token');
+    const headers = {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    }
+    return this.http.post<any>(`${baseUrl}/fixtures/addFixture`, data,{headers});
   }
 
   updateFixture(data: any){
-    return this.http.put<any>(`${baseUrl}/fixtures/updateResult`, data);
+    const token = localStorage.getItem('token');
+    const headers = {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    }
+    return this.http.put<any>(`${baseUrl}/fixtures/updateResult`, data,{headers});
   }
 
   deleteFixture(fixture_id: any): Observable<any>{
-    return this.http.delete<any>(`${baseUrl}/fixtures/deleteFixture/${fixture_id}`);
+    const token = localStorage.getItem('token');
+    const headers = {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    }
+    return this.http.delete<any>(`${baseUrl}/fixtures/deleteFixture/${fixture_id}`,{headers});
   }
 
   getTeams(data: number): Observable<any>{
-    return this.http.get<any>(`${baseUrl}/teams/getTeams/${data}`);
+    const token = localStorage.getItem('token');
+    const headers = {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    }
+    return this.http.get<any>(`${baseUrl}/teams/getTeams/${data}`,{headers});
   }
 
 }

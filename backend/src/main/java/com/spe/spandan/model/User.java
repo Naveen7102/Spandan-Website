@@ -27,7 +27,7 @@ public class User {
     @Column(name = "password")
     private String password;
 
-    @Column(name = "userType")
+    @Column(name = "user_type")
     private String userType;
 
     @Column(name = "email")
@@ -35,6 +35,17 @@ public class User {
 
     @Column(name = "phone_no")
     private String phone_no;
+
+
+    private String token;
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
 
     public User(String username, String password, String userType, String email, String phone_no) {
         this.username = username;
@@ -94,4 +105,5 @@ public class User {
     public void setPhone_no(String phone_no) {
         this.phone_no = phone_no;
     }
+
 }

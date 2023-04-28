@@ -4,6 +4,7 @@ import { Teams } from 'src/app/models/teams.model';
 import { User } from 'src/app/models/user.model';
 import { DataexchangeService } from 'src/app/services/dataexchange.service';
 import { FixturesService } from 'src/app/services/fixtures.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-fixtures',
@@ -25,7 +26,7 @@ export class FixturesComponent implements OnInit  {
   getTeams:boolean;
   teamsList: Array<Teams>;
 
-  constructor(private dataservice: DataexchangeService, private fixtureService: FixturesService) {
+  constructor(private router: Router,private dataservice: DataexchangeService, private fixtureService: FixturesService) {
     this.sport_id = -1;
     this.fixtureNumber = null;
     this.user_details = {};
@@ -136,6 +137,11 @@ export class FixturesComponent implements OnInit  {
         console.log(e);
       }
     });
+  }
+
+  logout(){
+    localStorage.removeItem('token');
+    this.router.navigate(['login']);
   }
 
 }
