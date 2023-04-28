@@ -46,6 +46,10 @@ export class FixturesComponent implements OnInit  {
 
   }
 
+  isAdminSpoc():boolean{
+    return this.user_details.user_type === "Admin" || this.user_details.user_type === "SPOC";
+  }
+
   getFixtures(){
     this.fixtureService.getFixtures(this.sport_id)
     .subscribe({

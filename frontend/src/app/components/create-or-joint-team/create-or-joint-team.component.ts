@@ -47,6 +47,10 @@ export class CreateOrJointTeamComponent implements OnInit {
 
   }
 
+  isAdminSpoc() :boolean{
+    return this.user_details.user_type === "Admin" || this.user_details.user_type === "SPOC";
+  }
+
   onTeamChange(UpdatedValue: string):void{
 		this.teamName = UpdatedValue;
 	}

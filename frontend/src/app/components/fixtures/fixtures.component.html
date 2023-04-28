@@ -128,7 +128,7 @@
 
   </div>
   
-  <div class="teams-list">
+  <div class="teams-list" *ngIf="isAdminSpoc()">
 
     <button class="btn btn-primary" (click)="getTeamslist()" *ngIf="getTeams">Get Teams</button>
 
@@ -140,7 +140,7 @@
 
   </div>
 
-  <div class="border border-secondary rounded add-rule">
+  <div class="border border-secondary rounded add-rule" *ngIf="isAdminSpoc()">
     <h5>Add a fixture</h5>
     <form (ngSubmit)="addFixture()">
       <input type="text" class="form-control search" name="team1" [(ngModel)]="team1" id="team1" placeholder="Team 1 Name">
@@ -152,7 +152,7 @@
     
  </div>
 
- <div class="border border-secondary rounded update-fixture">
+ <div class="border border-secondary rounded update-fixture" *ngIf="isAdminSpoc()">
     <h5>Add result for a fixture</h5>
     <form (ngSubmit)="addResult()">
       <input type="text" class="form-control search" name="fixturenumber" [(ngModel)]="fixtureNumber" id="fixturenumber" placeholder="Fixture Number">

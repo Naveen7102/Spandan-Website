@@ -49,7 +49,7 @@
         <button class="btn btn-primary" (click)="joinTeam()">Join Team</button>
     </div>
 
-    <div class="teams-list">
+    <div class="teams-list" *ngIf="isAdminSpoc()">
 
       <button class="btn btn-primary" (click)="getTeamslist()" *ngIf="getTeams">Get Teams</button>
 
@@ -61,7 +61,7 @@
 
     </div>
 
-    <div class="join-team">
+    <div class="join-team" *ngIf="isAdminSpoc()">
       <div class="members-list" *ngFor="let player of playersList;">
           <p class="btn btn-primary player col-sm-3">{{player.username}} - {{player.phone_no}}</p>
       </div>
@@ -73,7 +73,7 @@
             <li>{{rule}}</li>
         </ol>
 
-        <div class="add-rule">
+        <div class="add-rule" *ngIf="isAdminSpoc()">
            <input type="text" [ngModel] ='rule' (ngModelChange)='onRuleChange($event)' class="form-control search" placeholder="Enter a Rule">
             <button class="btn btn-primary" (click)="addRule(rule)">Add Rule</button>
         </div> 

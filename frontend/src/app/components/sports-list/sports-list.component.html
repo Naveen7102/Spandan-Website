@@ -55,17 +55,17 @@
     </div>
   </div>
 
-  <div class="add-sport">
+  <div class="add-sport" *ngIf="isAdmin()">
     <input type="text" class="form-control search" placeholder="Enter a Sport Name" [ngModel] ='sport' (ngModelChange)='onSportChange($event)'>
     <button class="btn btn-primary" (click)="AddSport(sport)">Add Sport</button>
   </div>
 
-  <div class="add-spocs">
+  <div class="add-spocs" *ngIf="isAdmin()">
     <input type="text" class="form-control search" placeholder="Add SPOC Email Address " [ngModel] ='email' (ngModelChange)='onMailChange($event)'>
     <button class="btn btn-primary" (click)="AddSpocs(email)">Add Spocs</button>
   </div>
 
-  <div class="set-date">
+  <div class="set-date" *ngIf="isAdmin()">
     <input type="date" class="form-control search" placeholder="Set Start Date fo Spandan" [ngModel] ='date' (ngModelChange)='onDateChange($event)'>
     <button class="btn btn-primary" (click)="SetDate(date)">Set Date</button>
   </div>

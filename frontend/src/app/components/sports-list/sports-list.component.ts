@@ -37,6 +37,10 @@ export class SportsListComponent {
     
   }
 
+  isAdmin() :boolean{
+    return this.user_details.user_type === "ADMIN";
+  }
+
   onMailChange(UpdatedValue: string):void
 	{
 		this.email = UpdatedValue;
