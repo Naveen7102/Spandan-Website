@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.*;
 
 import javax.transaction.Transactional;
-import java.sql.Date;
+import java.util.ArrayList;
 import java.util.Map;
 
 @CrossOrigin(origins = "*")
@@ -57,6 +57,7 @@ public class RulesNDateController {
         try{
             Rules r = new Rules();
             r.setRule(requestMap.get("rule").getBytes());
+            System.out.println(requestMap.get("rule").getBytes());
             r.setSport_id(Integer.parseInt(requestMap.get("sport_id")));
             rulesRepository.save(r);
             Message success = new Message("Rule added Successfully.");
@@ -69,15 +70,25 @@ public class RulesNDateController {
         return new ResponseEntity<Message>(failed, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
-    @GetMapping(path = "rules/getRule")
-    public ResponseEntity<Rules> getRule(){
+    @GetMapping(path = "rules/getRule/{sport_id}")
+    public ResponseEntity<ArrayList<String>> getRule(@PathVariable Integer sport_id){
         try{
-            return new ResponseEntity<Rules>(rulesRepository.getRule(), HttpStatus.OK);
+            ArrayList<String> rulesReturn = new ArrayList<>();
+            ArrayList<Rules> rules = rulesRepository.getRule(sport_id);
+//            System.out.println(rules);
+            if(rules != null){
+                for(Rules r:rules){
+
+                    String rule = new String(r.getRule());
+                    rulesReturn.add(rule);
+                }
+            }
+            return new ResponseEntity<ArrayList<String>>(rulesReturn, HttpStatus.OK);
         }
         catch(Exception e){
             e.printStackTrace();
         }
-        return new ResponseEntity<Rules>(new Rules(), HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<ArrayList<String>>(new ArrayList<String>(), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
 }

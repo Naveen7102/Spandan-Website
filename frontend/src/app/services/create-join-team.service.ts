@@ -64,7 +64,7 @@ export class CreateJoinTeamService {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}`
     }
-    return this.http.get<any>(`${baseUrl}/sport/getRules/${data}`, {headers});
+    return this.http.get<any>(`${baseUrl}/rules/getRule/${data}`, {headers});
   }
 
   addRule(data: any): Observable<any>{
@@ -73,7 +73,7 @@ export class CreateJoinTeamService {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}`
     }
-    return this.http.post<any>(`${baseUrl}/sport/addRule`, data, {headers});
+    return this.http.post<any>(`${baseUrl}/rules/addRule`, data, {headers});
   }
 
 }

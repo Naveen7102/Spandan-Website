@@ -71,9 +71,9 @@
     
     <div class="about-rules">
         <h4>Rules and About the Game</h4>
-        <ol class="rules" *ngFor="let rule of rulesList;">
+        <ul class="rules" *ngFor="let rule of rulesList;">
             <li>{{rule}}</li>
-        </ol>
+        </ul>
 
         <div class="add-rule" *ngIf="isAdminSpoc()">
            <input type="text" [ngModel] ='rule' (ngModelChange)='onRuleChange($event)' class="form-control search" placeholder="Enter a Rule">

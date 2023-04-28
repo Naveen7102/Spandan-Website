@@ -34,8 +34,8 @@ public class TeamMembersService {
                 Integer team_id = teamsRepository.getTeamId(requestMap.get("team"),Integer.parseInt(requestMap.get("sport_id")));
                 Integer participant_id = Integer.parseInt(requestMap.get("participant_id"));
                 Integer sport_id = Integer.parseInt(requestMap.get("sport_id"));
-                TeamMembers tm = teamMembersRepository.getId(sport_id,team_id,participant_id);
-
+                TeamMembers tm = teamMembersRepository.getId(sport_id,participant_id);
+//                System.out.println(tm.getId());
                 if(tm == null){
                     teamMembersRepository.save(createTeamMemberFromMap(requestMap));
                     Message success = new Message("Fixture added Successfully.");
@@ -43,11 +43,11 @@ public class TeamMembersService {
                 }
                 else if(tm.getSport_id() == sport_id && tm.getParticipant_id() == participant_id) {
                     if(tm.getTeam_id() == team_id){
-                        Message addFailed2 = new Message("Member already in another team");
+                        Message addFailed2 = new Message("Member already in same team");
                         return new ResponseEntity<Message>(addFailed2, HttpStatus.BAD_REQUEST);
                     }
                     else{
-                        Message addFailed2 = new Message("Member already in same team");
+                        Message addFailed2 = new Message("Member already in another team");
                         return new ResponseEntity<Message>(addFailed2, HttpStatus.BAD_REQUEST);
                     }
                 }

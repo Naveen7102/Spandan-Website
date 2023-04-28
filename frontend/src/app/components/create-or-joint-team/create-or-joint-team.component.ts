@@ -181,6 +181,8 @@ export class CreateOrJointTeamComponent implements OnInit {
         console.log(data);
         this.rulesList = data;
         alert("rule added");
+        this.getRulesList();
+        this.rule = '';
       },
       error: (e) => {
         alert("Rules not Found");

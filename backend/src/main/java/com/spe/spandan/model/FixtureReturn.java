@@ -1,8 +1,5 @@
 package com.spe.spandan.model;
 
-import javax.persistence.Column;
-import java.sql.Timestamp;
-
 public class FixtureReturn {
 
     private Integer id;
