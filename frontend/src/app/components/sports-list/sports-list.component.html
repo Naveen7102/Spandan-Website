@@ -49,8 +49,8 @@
             <div class="card-body">
               <h5 class="card-title">{{sport.name}}</h5>
               <div class="buttons">
-                <button class="btn btn-primary" (click)="redirectToFixturesPage(sport.id)">Fixtures</button>
-                <button href="#" class="btn btn-primary" (click)="redirectToTeamsPage(sport.id)">Create/Join a Team</button>
+                <button class="btn btn-primary" (click)="redirectToFixturesPage(sport.id, sport.name!)">Fixtures</button>
+                <button href="#" class="btn btn-primary" (click)="redirectToTeamsPage(sport.id, sport.name!)">Create/Join a Team</button>
               </div>
             </div>
           </div>
@@ -59,20 +59,25 @@
     </div>
   </div>
 
-  <div class="add-sport" *ngIf="isAdmin()">
-    <input type="text" class="form-control search" placeholder="Enter a Sport Name" [ngModel] ='sport' (ngModelChange)='onSportChange($event)'>
-    <button class="btn btn-primary" (click)="AddSport(sport)">Add Sport</button>
+  <div class="admin-buttons">
+    <h3>Admin Controls</h3>
+    <div class="add-sport" *ngIf="isAdmin()">
+      <input type="text" class="form-control search" placeholder="Enter a Sport Name" [ngModel] ='sport' (ngModelChange)='onSportChange($event)'>
+      <button class="btn btn-primary" (click)="AddSport(sport)">Add Sport</button>
+    </div>
+    <br>
+    <div class="add-spocs" *ngIf="isAdmin()">
+      <input type="text" class="form-control search" placeholder="Add SPOC Email Address " [ngModel] ='email' (ngModelChange)='onMailChange($event)'>
+      <button class="btn btn-primary" (click)="AddSpocs(email)">Add Spocs</button>
+    </div>
+    <br>
+    <div class="set-date" *ngIf="isAdmin()">
+      <input type="date" class="form-control search" placeholder="Set Start Date fo Spandan" [ngModel] ='date' (ngModelChange)='onDateChange($event)'>
+      <button class="btn btn-primary" (click)="SetDate(date)">Set Date</button>
+    </div>
   </div>
 
-  <div class="add-spocs" *ngIf="isAdmin()">
-    <input type="text" class="form-control search" placeholder="Add SPOC Email Address " [ngModel] ='email' (ngModelChange)='onMailChange($event)'>
-    <button class="btn btn-primary" (click)="AddSpocs(email)">Add Spocs</button>
-  </div>
-
-  <div class="set-date" *ngIf="isAdmin()">
-    <input type="date" class="form-control search" placeholder="Set Start Date fo Spandan" [ngModel] ='date' (ngModelChange)='onDateChange($event)'>
-    <button class="btn btn-primary" (click)="SetDate(date)">Set Date</button>
-  </div>
+  
 
 </body>
 </html>

@@ -37,7 +37,7 @@
     </div> -->
 
   </nav>
-  <h2 class="page-title">Cricket</h2>
+  <h2 class="page-title">{{sport_details.name}}</h2>
     <div class="create-join-team">
         <input type="text" class="form-control search" [ngModel] ='teamName' (ngModelChange)='onTeamChange($event)' placeholder="Search for a Team or Create a Team">
         <button class="btn btn-primary" (click)="searchTeam(teamName)">Search Team</button>

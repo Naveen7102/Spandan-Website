@@ -48,7 +48,7 @@ div {
 }
 
 .sport:hover {
-    animation: jump 1s;
+    animation: jump 0.3s;
     animation-fill-mode: forwards;
 }
   
@@ -87,24 +87,46 @@ div {
     text-align: center;
 }
 
+.admin-buttons{
+    border-style: solid;
+    border-radius: 2px;
+    border-width: medium;
+    border-color:lightslategray;
+    box-shadow: 5px 5px rgb(72, 72, 72);
+    text-align: center;
+    margin: 1% 25%;
+    background-color: rgba(0,0,0,.4)
+}
+
+.admin-buttons h3{
+    margin-top: 2%;
+}
+
 .add-spocs{
     margin: 3% 15% 0% 15%;
     text-align: center;
-    
+    display: inline-block;
+    width: 80%;
 }
 
 .add-sport{
-    margin: 3% 15% 0% 15%;
+    margin: 1% 15% 0% 15%;
     text-align: center;
+    display: inline-block;
+    width: 80%;
 }
 
 .set-date{
-    margin: 3% 15% 0% 15%;
+    margin: 3% 15% 3% 15%;
     text-align: center;
+    display: inline-block;
+    width: 80%;
 }
 
 .search{
+    vertical-align: middle;
     display: inline-block;
-    width: 28%;
-    margin-right: 2%;
+    width: 35%;
+    margin-right: 0%;
 }
+

@@ -4,6 +4,7 @@ import { User } from 'src/app/models/user.model';
 import { CreateJoinTeamService } from 'src/app/services/create-join-team.service';
 import { DataexchangeService } from 'src/app/services/dataexchange.service';
 import { Router } from '@angular/router';
+import { Sport } from 'src/app/models/sport.model';
 
 @Component({
   selector: 'app-create-or-joint-team',
@@ -11,7 +12,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./create-or-joint-team.component.css']
 })
 export class CreateOrJointTeamComponent implements OnInit {
-  sport_id: number;
+  sport_details: Sport;
   user_details: any;
   displayTeamPlayers: boolean;
   teamName: string;
@@ -32,15 +33,15 @@ export class CreateOrJointTeamComponent implements OnInit {
     this.getTeams = true;
     this.players = new Array<string>;
     this.teamsList = new Array<Teams>;
-    this.sport_id = -1;
+    this.sport_details = {};
     this.user_details = {};
     this.dataservice.id.subscribe(data => {
       this.user_details = data;
     });
     this.dataservice.name.subscribe(data=>{
-      this.sport_id = data;
+      this.sport_details = data;
     });
-    console.log(this.sport_id);
+    console.log(this.sport_details);
     this.getRulesList();
   }
 
@@ -63,7 +64,7 @@ export class CreateOrJointTeamComponent implements OnInit {
   searchTeam(name: string){
 
     const data = {
-      sport_id: this.sport_id,
+      sport_id: this.sport_details.id,
       team: this.teamName
     };
     console.log(data);
@@ -75,7 +76,7 @@ export class CreateOrJointTeamComponent implements OnInit {
           this.joinTeamName = name;
         },
         error: (e) => {
-          alert("invalid login");
+          alert("Team Not found");
           console.error(e);
         }
       });
@@ -84,7 +85,7 @@ export class CreateOrJointTeamComponent implements OnInit {
 
   createTeam(name: string){
     const data = {
-      sport_id: this.sport_id,
+      sport_id: this.sport_details.id,
       name: this.teamName
     };
     console.log(data);
@@ -95,7 +96,7 @@ export class CreateOrJointTeamComponent implements OnInit {
         alert(data);
       },
       error: (e) => {
-        alert("Team not Found");
+        alert(e.message);
         console.error(e);
       }
     });
@@ -104,7 +105,7 @@ export class CreateOrJointTeamComponent implements OnInit {
 
   joinTeam(){
     const data = {
-      sport_id: this.sport_id,
+      sport_id: this.sport_details.id,
       team: this.joinTeamName,
       participant_id: this.user_details.id
     };
@@ -116,7 +117,7 @@ export class CreateOrJointTeamComponent implements OnInit {
         alert(data);
       },
       error: (e) => {
-        alert("Team not Found");
+        alert(e.error.message);
         console.error(e);
       }
     });
@@ -124,7 +125,7 @@ export class CreateOrJointTeamComponent implements OnInit {
   }
 
   getTeamslist(){
-    this.createJoinService.getTeams(this.sport_id)
+    this.createJoinService.getTeams(this.sport_details.id)
     .subscribe({
       next: (data: any) => {
         console.log(data);
@@ -140,7 +141,7 @@ export class CreateOrJointTeamComponent implements OnInit {
 
   getTeamPlayers(teamname: any){
     const data = {
-      sport_id: this.sport_id,
+      sport_id: this.sport_details.id,
       name: teamname
     };
     this.createJoinService.getTeamPlayers(data)
@@ -157,7 +158,7 @@ export class CreateOrJointTeamComponent implements OnInit {
   }
 
   getRulesList(){
-    this.createJoinService.getRules(this.sport_id)
+    this.createJoinService.getRules(this.sport_details.id,)
     .subscribe({
       next: (data: any) => {
         console.log(data);
@@ -172,7 +173,7 @@ export class CreateOrJointTeamComponent implements OnInit {
 
   addRule(rule: string){
     const data = {
-      sport_id: this.sport_id,
+      sport_id: this.sport_details.id,
       rule: rule
     };
     this.createJoinService.addRule(data)

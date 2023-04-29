@@ -5,6 +5,7 @@ import { User } from 'src/app/models/user.model';
 import { DataexchangeService } from 'src/app/services/dataexchange.service';
 import { FixturesService } from 'src/app/services/fixtures.service';
 import { Router } from '@angular/router';
+import { Sport } from 'src/app/models/sport.model';
 
 @Component({
   selector: 'app-fixtures',
@@ -13,7 +14,7 @@ import { Router } from '@angular/router';
 })
 export class FixturesComponent implements OnInit  {
 
-  sport_id: number;
+  sport_details: Sport;
   user_details: any;
   fixtures: Array<Fixture>;
   team1: string = '';
@@ -27,7 +28,7 @@ export class FixturesComponent implements OnInit  {
   teamsList: Array<Teams>;
 
   constructor(private router: Router,private dataservice: DataexchangeService, private fixtureService: FixturesService) {
-    this.sport_id = -1;
+    this.sport_details = {};
     this.fixtureNumber = null;
     this.user_details = {};
     this.teamsList = new Array<Teams>;
@@ -37,12 +38,12 @@ export class FixturesComponent implements OnInit  {
       this.user_details = data;
     });
     this.dataservice.name.subscribe(data=>{
-      this.sport_id = data;
+      this.sport_details = data;
     });
     // console.log(this.user_details);
     // this.isAdminSpoc();
     this.getFixtures();
-    console.log(this.sport_id);
+    console.log(this.sport_details.id);
   }
 
   ngOnInit(): void {
@@ -55,7 +56,7 @@ export class FixturesComponent implements OnInit  {
   }
 
   getFixtures(){
-    this.fixtureService.getFixtures(this.sport_id)
+    this.fixtureService.getFixtures(this.sport_details.id)
     .subscribe({
       next: (data: any) => {
         this.fixtures = data;
@@ -70,7 +71,7 @@ export class FixturesComponent implements OnInit  {
 
   addFixture(){
     const data = {
-      sport_id: this.sport_id,
+      sport_id: this.sport_details.id,
       team1: this.team1,
       team2: this.team2,
       time: this.date + " " + this.time + ":00",
@@ -93,7 +94,7 @@ export class FixturesComponent implements OnInit  {
   addResult(){
     const data = {
       id: this.fixtures[this.fixtureNumber].id,
-      sport_id: this.sport_id,
+      sport_id: this.sport_details.id,
       winner: this.winner,
       result: this.result
     }
@@ -113,7 +114,7 @@ export class FixturesComponent implements OnInit  {
   }
 
   getTeamslist(){
-    this.fixtureService.getTeams(this.sport_id)
+    this.fixtureService.getTeams(this.sport_details.id)
     .subscribe({
       next: (data: any) => {
         console.log(data);

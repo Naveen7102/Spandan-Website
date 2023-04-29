@@ -72,15 +72,23 @@ export class SportsListComponent {
     });
   }
 
-  redirectToFixturesPage(sport:number) {
+  redirectToFixturesPage(sport_id:number, sport_name: string) {
     this.dataservice.changeUserId(this.user_details);
-    this.dataservice.changeSport(sport);
+    const sport_details:Sport = {
+      id: sport_id,
+      name: sport_name
+    };
+    this.dataservice.changeSport(sport_details);
     this.router.navigate(['fixtures']);
   }
 
-  redirectToTeamsPage(sport:any) {
+  redirectToTeamsPage(sport_id:number, sport_name: string) {
     this.dataservice.changeUserId(this.user_details);
-    this.dataservice.changeSport(sport);
+    const sport_details:Sport = {
+      id: sport_id,
+      name: sport_name
+    };
+    this.dataservice.changeSport(sport_details);
     this.router.navigate(['create-join-team']);
   }
 
@@ -103,6 +111,8 @@ export class SportsListComponent {
     this.sportsService.addSpoc(email)
       .subscribe({
         next: (data:string) => {
+          this.email = '';
+          alert("Succesfully added spoc");
         },
         error: (e) => console.error(e)
       });
@@ -116,7 +126,8 @@ export class SportsListComponent {
     this.sportsService.setStartDate(data)
       .subscribe({
         next: (data:string) => {
-
+          this.date = '';
+          alert("Succesfully Changed Date");
         },
         error: (e) => console.error(e)
       });
