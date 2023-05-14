@@ -92,8 +92,11 @@ export class FixturesComponent implements OnInit  {
   }
 
   addResult(){
+    console.log(this.fixtures);
+    console.log(this.fixtureNumber);
+    console.log(this.fixtures[this.fixtureNumber-1]);
     const data = {
-      id: this.fixtures[this.fixtureNumber].id,
+      id: this.fixtures[this.fixtureNumber-1].id,
       sport_id: this.sport_details.id,
       winner: this.winner,
       result: this.result

@@ -35,7 +35,7 @@ export class FixturesService {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}`
     }
-    return this.http.put<any>(`${baseUrl}/fixtures/updateResult`, data,{headers});
+    return this.http.post<any>(`${baseUrl}/fixtures/updateResult`, data,{headers});
   }
 
   deleteFixture(fixture_id: any): Observable<any>{
@@ -44,7 +44,8 @@ export class FixturesService {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}`
     }
-    return this.http.delete<any>(`${baseUrl}/fixtures/deleteFixture/${fixture_id}`,{headers});
+    console.log(headers);
+    return this.http.get<any>(`${baseUrl}/fixtures/deleteFixture?id=${fixture_id}`,{headers});
   }
 
   getTeams(data: number): Observable<any>{

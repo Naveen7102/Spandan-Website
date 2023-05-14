@@ -55,8 +55,8 @@ public class FixturesController {
         return new ResponseEntity<Message>(failed, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
-    @DeleteMapping(path = "fixtures/deleteFixture/{id}")
-    public ResponseEntity<Message> deleteFixture(@PathVariable Integer id){
+    @GetMapping(path = "fixtures/deleteFixture")
+    public ResponseEntity<Message> deleteFixture(@RequestParam Integer id){
         Message failed = new Message("Something Went Wrong at Fixture Controller.");
         try{
             return fixturesService.deleteFixture(id);
