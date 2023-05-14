@@ -118,7 +118,7 @@ public class UserService {
 
     @Transactional
     public ResponseEntity<Message> updateSPOC(String email) {
-        Message success = new Message("User added Successfully.");
+        Message success = new Message("SPOC updated successfully");
         Message failed = new Message("Something Went Wrong at User Service.");
         try{
             userRepository.updateSPOC(email);
