@@ -1,0 +1,30 @@
+services:
+  
+  backend:
+          image: naveen7102/backend:latest
+          container_name: spandan-backend
+    ports:
+            - "8101:8101"
+    networks:
+            spandan:
+                    ipv4_address: 172.28.1.7
+    
+ 
+  frontend:
+    image: naveen7102/frontend:latest
+    container_name: spandan-frontend
+    stdin_open: true
+    ports:
+           - "4201:4200"
+    networks:
+            spandan:
+                    ipv4_address: 172.28.1.6
+       
+
+  networks:
+          spandan:
+                  ipam:
+                          driver: default
+                          config:
+                          -subnet: 172.28.1.0/24
+

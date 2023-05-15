@@ -1,0 +1,22 @@
+---
+- name: Pull all docker images
+  hosts: all
+  tasks:
+          - name: Copy docker compose from host machine to remote machine
+            copy: 
+               src: ./docker-compose.yml
+               dest: ./
+               
+          - name: start docker service
+            service:
+              name: docker
+              state: started
+              
+          - name: pull calculator image
+            command: docker-compose pull
+
+          - name: Create containers for pulled docker images
+            command: docker-compose up -d
+                    
+          - name: prune the previous images
+            command: docker image prune --force
