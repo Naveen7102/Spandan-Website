@@ -4,12 +4,12 @@
 # ENTRYPOINT ["java","-jar","/app.jar"]
 
 
-FROM openjdk:8-jdk-alpine
+FROM openjdk:11
 
-WORKDIR /app
+WORKDIR .
 
 COPY target/Spandan.jar .
 
-EXPOSE 8080
+EXPOSE 8101
 
 CMD ["java", "-jar", "Spandan.jar"]
