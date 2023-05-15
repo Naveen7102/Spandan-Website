@@ -12,8 +12,15 @@
               name: docker
               state: started
               
-          - name: pull calculator image
-            command: docker-compose pull
+          - name: pull backend image
+            docker_image:
+                    name: naveen7102/backend
+                    source: pull
+
+          - name: pull frontend image
+            docker_image:
+                    name: naveen7102/frontend
+                    source: pull
 
           - name: Create containers for pulled docker images
             command: docker-compose up -d
