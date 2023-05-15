@@ -38,7 +38,7 @@ public class TeamMembersService {
 //                System.out.println(tm.getId());
                 if(tm == null){
                     teamMembersRepository.save(createTeamMemberFromMap(requestMap));
-                    Message success = new Message("Fixture added Successfully.");
+                    Message success = new Message("Member added Successfully.");
                     return new ResponseEntity<Message>(success, HttpStatus.OK);
                 }
                 else if(tm.getSport_id() == sport_id && tm.getParticipant_id() == participant_id) {

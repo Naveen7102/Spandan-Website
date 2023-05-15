@@ -14,10 +14,14 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.Map;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @CrossOrigin(origins = "*")
 @RestController
 public class SportsController {
+    private static final Logger logger = LoggerFactory.getLogger(SportsController.class);
+
     @Autowired
     SportsService sportsService;
 
@@ -26,6 +30,7 @@ public class SportsController {
 
     @PostMapping(path = "sport/addSport")
     public ResponseEntity<Message> addSport(@RequestBody(required = true) String sport) {
+        logger.info("[addSport] - " + sport);
         Message failed = new Message("Something Went Wrong at Sports Controller.");
         try{
             return sportsService.addSport(sport);
@@ -33,11 +38,13 @@ public class SportsController {
         catch(Exception e){
             e.printStackTrace();
         }
+        logger.error("[ERROR] - Something Went Wrong at Sports Controller.");
         return new ResponseEntity<Message>(failed, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     @GetMapping(path = "sport/getSports")
     public ResponseEntity<ArrayList<Sports>> getSports() {
+        logger.info("[getSports]");
         try{
             ArrayList<Sports> s = sportsRepository.getSports();
             return new ResponseEntity<ArrayList<Sports>>(s, HttpStatus.OK);
@@ -46,6 +53,7 @@ public class SportsController {
             e.printStackTrace();
         }
         ArrayList<Sports> failed = new ArrayList<Sports>();
+        logger.error("[ERROR] - Something Went Wrong at Sports Controller.");
         return new ResponseEntity<ArrayList<Sports>>(failed, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }

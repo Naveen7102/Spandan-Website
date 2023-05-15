@@ -76,7 +76,7 @@ public class UserControllerTest {
         assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
         assertNotNull(responseEntity.getBody());
         assertEquals("d.s@in", responseEntity.getBody().getEmail());
-        assertEquals("9091", responseEntity.getBody().getPhone_no());
+        assertEquals("9191", responseEntity.getBody().getPhone_no());
         assertEquals("Durga", responseEntity.getBody().getUsername());
         assertEquals("Participant", responseEntity.getBody().getUserType());
 
