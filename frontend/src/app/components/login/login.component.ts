@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { User } from 'src/app/models/user.model';
 import { DataexchangeService } from 'src/app/services/dataexchange.service';
 import { LoginService } from 'src/app/services/login.service';
+import { NGXLogger } from 'ngx-logger';
+import { ClientLoggerService } from 'src/app/services/client-logger.service';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +18,7 @@ export class LoginComponent implements OnInit {
   password: string;
   user_details: User;
 
-  constructor(private router: Router, private dataservice: DataexchangeService, private loginService: LoginService) {
+  constructor(private router: Router, private dataservice: DataexchangeService, private loginService: LoginService, private logger: NGXLogger, private clientLoggerService: ClientLoggerService) {
     this.email = '';
     this.password = '';
     this.user_details = {};
@@ -48,10 +50,15 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('token', this.user_details.token);
           
           this.dataservice.changeUserId(this.user_details);
+          localStorage.setItem("user_details",JSON.stringify(this.user_details));
           console.log(this.user_details);
+          this.logger.info("Login Successful");
+          this.clientLoggerService.log("Login Successful");
           this.router.navigate(['sports']);
         },
         error: (e) => {
+          this.logger.error("Invalid login details provided");
+          this.clientLoggerService.log("Invalid login details provided");
           alert("invalid login");
           console.error(e);
         }

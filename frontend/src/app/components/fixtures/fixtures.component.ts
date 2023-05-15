@@ -6,6 +6,8 @@ import { DataexchangeService } from 'src/app/services/dataexchange.service';
 import { FixturesService } from 'src/app/services/fixtures.service';
 import { Router } from '@angular/router';
 import { Sport } from 'src/app/models/sport.model';
+import { NGXLogger } from 'ngx-logger';
+import { ClientLoggerService } from 'src/app/services/client-logger.service';
 
 @Component({
   selector: 'app-fixtures',
@@ -27,7 +29,7 @@ export class FixturesComponent implements OnInit  {
   getTeams:boolean;
   teamsList: Array<Teams>;
 
-  constructor(private router: Router,private dataservice: DataexchangeService, private fixtureService: FixturesService) {
+  constructor(private router: Router,private dataservice: DataexchangeService, private fixtureService: FixturesService,private logger: NGXLogger, private clientLoggerService: ClientLoggerService) {
     this.sport_details = {};
     this.fixtureNumber = null;
     this.user_details = {};
@@ -40,6 +42,8 @@ export class FixturesComponent implements OnInit  {
     this.dataservice.name.subscribe(data=>{
       this.sport_details = data;
     });
+    this.user_details = JSON.parse(localStorage.getItem("user_details")!);
+    this.sport_details = JSON.parse(localStorage.getItem("sport_details")!);
     // console.log(this.user_details);
     // this.isAdminSpoc();
     this.getFixtures();
@@ -59,10 +63,14 @@ export class FixturesComponent implements OnInit  {
     this.fixtureService.getFixtures(this.sport_details.id)
     .subscribe({
       next: (data: any) => {
+        this.logger.info("Sucessfully received the fixtures");
+        this.clientLoggerService.log("Sucessfully received the fixtures");
         this.fixtures = data;
         console.log(this.fixtures)
       },
       error: (e) => {
+        this.logger.error("Faileed to get the fixtures result");
+        this.clientLoggerService.log("Faileed to get the fixtures result");
         alert("Failed to get fixtures for this sport");
         console.log(e);
       }
@@ -80,11 +88,15 @@ export class FixturesComponent implements OnInit  {
     this.fixtureService.addFixture(data)
       .subscribe({
         next: (data:any) => {
+          this.logger.info("Sucessfully added the fixture");
+          this.clientLoggerService.log("Sucessfully added the fixture");
           console.log(data.message);
           this.getFixtures();
           alert("Success");
         },
         error: (e) => {
+          this.logger.error("Faileed to add the fixtures");
+          this.clientLoggerService.log("Faileed to add the fixtures");
           alert("Failed");
           console.error(e);
         }
@@ -105,11 +117,15 @@ export class FixturesComponent implements OnInit  {
     this.fixtureService.updateFixture(data)
       .subscribe({
         next: (data:any) => {
+          this.logger.info("Sucessfully added the fixture result");
+          this.clientLoggerService.log("Sucessfully added the fixture result");
           console.log(data.message);
           this.getFixtures();
           alert("Success");
         },
         error: (e) => {
+          this.logger.error("Failed to add the fixture result");
+          this.clientLoggerService.log("Failed to add the fixture result");
           alert("Failed");
           console.error(e);
         }
@@ -120,11 +136,15 @@ export class FixturesComponent implements OnInit  {
     this.fixtureService.getTeams(this.sport_details.id)
     .subscribe({
       next: (data: any) => {
+        this.logger.info("Sucessfully received teams list");
+        this.clientLoggerService.log("Sucessfully received teams list");
         console.log(data);
         this.getTeams = false;
         this.teamsList = data;
       },
       error: (e) => {
+        this.logger.error("Team not found");
+        this.clientLoggerService.log("Team not found");
         alert("Team not Found");
         console.error(e);
       }
@@ -138,8 +158,12 @@ export class FixturesComponent implements OnInit  {
         console.log(data);
         this.getFixtures();
         alert("Success");
+        this.logger.info("Fixture deleted succesfully");
+        this.clientLoggerService.log("Fixture deleted succesfully");
       },
       error: (e) => {
+        this.logger.error("Error in deleting the fixture");
+        this.clientLoggerService.log("Error in deleting the fixture");
         alert("Failed");
         console.log(e);
       }
@@ -147,6 +171,9 @@ export class FixturesComponent implements OnInit  {
   }
 
   logout(){
+    this.logger.info("Logout Successful");
+    this.clientLoggerService.log("Logout Successful");
+    this.clientLoggerService.saveLogsToFile();
     localStorage.removeItem('token');
     this.router.navigate(['login']);
   }

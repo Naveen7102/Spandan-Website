@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HomepageService } from 'src/app/services/homepage.service';
+import { NGXLogger } from 'ngx-logger';
+import { ClientLoggerService } from 'src/app/services/client-logger.service';
 
 @Component({
   selector: 'app-homepage',
@@ -7,7 +9,7 @@ import { HomepageService } from 'src/app/services/homepage.service';
   styleUrls: ['./homepage.component.css']
 })
 export class HomepageComponent implements OnInit {
-  targetDate: Date = new Date('2023-04-30');
+  targetDate: Date = new Date('2023-08-30');
   // date: Date = new Date('2023-04-30');
   
   
@@ -16,7 +18,7 @@ export class HomepageComponent implements OnInit {
   minutes: number = 0;
   seconds: number = 0;
 
-  constructor(private homepageservice: HomepageService) { this.getDate(); }
+  constructor(private homepageservice: HomepageService, private logger: NGXLogger, private clientLoggerService: ClientLoggerService) { this.getDate(); }
 
   ngOnInit(): void {
     this.getDate();
@@ -39,9 +41,14 @@ export class HomepageComponent implements OnInit {
     this.homepageservice.getStartDate()
       .subscribe({
         next: (data:any) => {
+          this.logger.info("Recieved the start date");
+          this.clientLoggerService.log("Recieved the start date");
           this.targetDate = new Date(data.date);
         },
-        error: (e) => console.error(e)
+        error: (e) => {
+          this.logger.error("Error inreceiving the start date");
+          this.clientLoggerService.log("Error inreceiving the start date");
+          console.error(e);}
       });
   }
 

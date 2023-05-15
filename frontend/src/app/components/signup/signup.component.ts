@@ -3,6 +3,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/user.model';
 import { SignupService } from 'src/app/services/signup.service';
+import { NGXLogger } from 'ngx-logger';
+import { ClientLoggerService } from 'src/app/services/client-logger.service';
 
 @Component({
   selector: 'app-signup',
@@ -17,7 +19,7 @@ export class SignupComponent implements OnInit {
   number: string;
   name: string;
 
-  constructor(private router: Router, private signupService: SignupService) {
+  constructor(private router: Router, private signupService: SignupService, private logger: NGXLogger, private clientLoggerService: ClientLoggerService) {
     this.email = '';
     this.password = '';
     this.password_c = '';
@@ -36,6 +38,8 @@ export class SignupComponent implements OnInit {
   onSubmit(): void{
 
     if((this.password === this.password_c) == false){
+      this.logger.error("Passwords doesnot match in both the fields");
+      this.clientLoggerService.log("Passwords doesnot match in both the fields");
       alert("Passwords donot match. Please Enter the same password in both fields");
     }
     else{
@@ -50,9 +54,14 @@ export class SignupComponent implements OnInit {
       this.signupService.signup(data)
       .subscribe({
         next: (data:any) => {
+          this.logger.info("Signup successful");
+          this.clientLoggerService.log("Signup successful");
           console.log(data.message);
         },
-        error: (e) => console.error(e)
+        error: (e) => {
+          this.logger.error("Signup Failed");
+          this.clientLoggerService.log("Signup Failed");
+          console.error(e);}
       });
       alert("success");
       this.router.navigate(['login']);
