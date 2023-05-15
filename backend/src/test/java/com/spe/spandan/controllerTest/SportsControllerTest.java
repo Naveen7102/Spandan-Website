@@ -25,11 +25,11 @@ public class SportsControllerTest {
     @Autowired
     private TestRestTemplate restTemplate;
 
-    private static final String ADMIN_AUTH_TOKEN = "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJuLmtAaW4iLCJ1c2VyX3R5cGUiOiJBZG1pbiIsImV4cCI6MTY4NDg1MTQ0NSwiaWF0IjoxNjgzOTg3NDQ1fQ._r8yb0mkxv6atqJ8LgfFYkVgXsqnm6K_DXq09dY7hVY";
+    private static final String ADMIN_AUTH_TOKEN = "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkLnNAaW4iLCJ1c2VyX3R5cGUiOiJQYXJ0aWNpcGFudCIsImV4cCI6MTY4NTAyMjQ2NCwiaWF0IjoxNjg0MTU4NDY0fQ.QipOH7YyWSeUVSiYlb5kjHUtSYs05td6LyMVEARncT8";
 
-    private static final String SPOC_AUTH_TOKEN = "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtLnNAaW4iLCJ1c2VyX3R5cGUiOiJTUE9DIiwiZXhwIjoxNjg0ODUxNTUwLCJpYXQiOjE2ODM5ODc1NTB9.bJJ3iRtbFQKwD_YQ25C8XcV_xP0XcfsIreJfRE01e28";
+    private static final String SPOC_AUTH_TOKEN = "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkLnNAaW4iLCJ1c2VyX3R5cGUiOiJQYXJ0aWNpcGFudCIsImV4cCI6MTY4NTAyMjQ2NCwiaWF0IjoxNjg0MTU4NDY0fQ.QipOH7YyWSeUVSiYlb5kjHUtSYs05td6LyMVEARncT8";
 
-    private static final String PARTICIPANT_AUTH_TOKEN = "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkLnNAaW4iLCJ1c2VyX3R5cGUiOiJQYXJ0aWNpcGFudCIsImV4cCI6MTY4NDg1MTcwOCwiaWF0IjoxNjgzOTg3NzA4fQ.R1-wVOCatA3My2JW3RcfdEpW41fWeXLQ15__UXyTFbs";
+    private static final String PARTICIPANT_AUTH_TOKEN = "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkLnNAaW4iLCJ1c2VyX3R5cGUiOiJQYXJ0aWNpcGFudCIsImV4cCI6MTY4NTAyMjQ2NCwiaWF0IjoxNjg0MTU4NDY0fQ.QipOH7YyWSeUVSiYlb5kjHUtSYs05td6LyMVEARncT8";
 //    @Test
 //    public void testAddSport() {
 //        HttpHeaders headers = new HttpHeaders();
