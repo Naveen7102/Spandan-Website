@@ -21,7 +21,7 @@ services:
     networks:
       - my_net
     environment:
-      - DATABASE_URL=jdbc:mysql://mysqldb-container:3306/hostel
+      - DATABASE_URL=jdbc:mysql://mysqldb-container:3306/spandan
     ports:
       - "8087:8087"
     links:
