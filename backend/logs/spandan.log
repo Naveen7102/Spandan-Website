@@ -1,78 +1,65 @@
-2023-05-16 12:04:49 INFO  [http-nio-auto-1-exec-1] c.s.s.controller.FixturesController - [updateResult] - getting fixtures for {result=Won by 20 runs, sport_id=1, winner=Test_Team1, id=1}
-2023-05-16 12:04:49 INFO  [http-nio-auto-1-exec-2] c.s.s.controller.FixturesController - [addFixture] - {sport_id=1, team1=Test_Team3, team2=Test_Team4, time=15-05-2023 22:00:00}
-2023-05-16 12:04:50 INFO  [http-nio-auto-1-exec-3] c.s.s.controller.FixturesController - [getFixtures] - getting fixtures for 1
-2023-05-16 12:04:50 INFO  [http-nio-auto-1-exec-4] c.s.s.controller.SportsController - [addSport] - Table Tennis
-2023-05-16 12:04:50 INFO  [http-nio-auto-1-exec-5] c.s.s.controller.SportsController - [getSports]
-2023-05-16 12:04:50 INFO  [http-nio-auto-1-exec-6] c.s.s.c.TeamMembersController - [getPlayers] - Test_Team1
-2023-05-16 12:04:50 INFO  [http-nio-auto-1-exec-7] c.s.s.c.TeamMembersController - [addMember] - {sport_id=1, participant_id=2, team=Test_Team2}
-2023-05-16 12:04:50 INFO  [http-nio-auto-1-exec-8] c.s.s.c.TeamMembersController - [getPlayersDetails] - Test_Team1
-2023-05-16 12:04:50 INFO  [http-nio-auto-1-exec-9] c.s.s.controller.TeamsController - [getTeams] - get teams of the sport with id 1
-2023-05-16 12:04:50 INFO  [http-nio-auto-1-exec-10] c.s.s.controller.TeamsController - [addTeam] - {sport_id=1, name=Test_Team1}
-2023-05-16 12:04:50 INFO  [http-nio-auto-1-exec-1] c.s.s.controller.UserController - [addUser] - {phone_no=9292, password=1234, user_type=Participant, email=v.s@in, username=Venkata}
-2023-05-16 12:04:50 INFO  [http-nio-auto-1-exec-2] c.s.s.controller.UserController - [login] - {password=1234, email=d.s@in}
-2023-05-16 12:04:50 INFO  [http-nio-auto-1-exec-3] c.s.s.controller.UserController - [updateSPOC] - m.s@in
-2023-05-16 12:06:17 INFO  [http-nio-auto-1-exec-1] c.s.s.controller.FixturesController - [updateResult] - getting fixtures for {result=Won by 20 runs, sport_id=1, winner=Test_Team1, id=1}
-2023-05-16 12:06:17 INFO  [http-nio-auto-1-exec-2] c.s.s.controller.FixturesController - [addFixture] - {sport_id=1, team1=Test_Team3, team2=Test_Team4, time=15-05-2023 22:00:00}
-2023-05-16 12:06:18 INFO  [http-nio-auto-1-exec-3] c.s.s.controller.FixturesController - [getFixtures] - getting fixtures for 1
-2023-05-16 12:06:18 INFO  [http-nio-auto-1-exec-4] c.s.s.controller.SportsController - [addSport] - Table Tennis
-2023-05-16 12:06:18 INFO  [http-nio-auto-1-exec-5] c.s.s.controller.SportsController - [getSports]
-2023-05-16 12:06:19 INFO  [http-nio-auto-1-exec-6] c.s.s.c.TeamMembersController - [getPlayers] - Test_Team1
-2023-05-16 12:06:19 INFO  [http-nio-auto-1-exec-7] c.s.s.c.TeamMembersController - [addMember] - {sport_id=1, participant_id=2, team=Test_Team2}
-2023-05-16 12:06:19 INFO  [http-nio-auto-1-exec-8] c.s.s.c.TeamMembersController - [getPlayersDetails] - Test_Team1
-2023-05-16 12:06:19 INFO  [http-nio-auto-1-exec-9] c.s.s.controller.TeamsController - [getTeams] - get teams of the sport with id 1
-2023-05-16 12:06:19 INFO  [http-nio-auto-1-exec-10] c.s.s.controller.TeamsController - [addTeam] - {sport_id=1, name=Test_Team1}
-2023-05-16 12:06:19 INFO  [http-nio-auto-1-exec-1] c.s.s.controller.UserController - [addUser] - {phone_no=9292, password=1234, user_type=Participant, email=v.s@in, username=Venkata}
-2023-05-16 12:06:19 INFO  [http-nio-auto-1-exec-2] c.s.s.controller.UserController - [login] - {password=1234, email=d.s@in}
-2023-05-16 12:06:19 INFO  [http-nio-auto-1-exec-3] c.s.s.controller.UserController - [updateSPOC] - m.s@in
-2023-05-16 12:07:09 INFO  [http-nio-auto-1-exec-1] c.s.s.controller.FixturesController - [updateResult] - getting fixtures for {result=Won by 20 runs, sport_id=1, winner=Test_Team1, id=1}
-2023-05-16 12:07:09 INFO  [http-nio-auto-1-exec-2] c.s.s.controller.FixturesController - [addFixture] - {sport_id=1, team1=Test_Team3, team2=Test_Team4, time=15-05-2023 22:00:00}
-2023-05-16 12:07:11 INFO  [http-nio-auto-1-exec-3] c.s.s.controller.FixturesController - [getFixtures] - getting fixtures for 1
-2023-05-16 12:07:11 INFO  [http-nio-auto-1-exec-4] c.s.s.controller.SportsController - [addSport] - Table Tennis
-2023-05-16 12:07:11 INFO  [http-nio-auto-1-exec-5] c.s.s.controller.SportsController - [getSports]
-2023-05-16 12:07:11 INFO  [http-nio-auto-1-exec-6] c.s.s.c.TeamMembersController - [getPlayers] - Test_Team1
-2023-05-16 12:07:11 INFO  [http-nio-auto-1-exec-7] c.s.s.c.TeamMembersController - [addMember] - {sport_id=1, participant_id=2, team=Test_Team2}
-2023-05-16 12:07:11 INFO  [http-nio-auto-1-exec-8] c.s.s.c.TeamMembersController - [getPlayersDetails] - Test_Team1
-2023-05-16 12:07:12 INFO  [http-nio-auto-1-exec-9] c.s.s.controller.TeamsController - [getTeams] - get teams of the sport with id 1
-2023-05-16 12:07:12 INFO  [http-nio-auto-1-exec-10] c.s.s.controller.TeamsController - [addTeam] - {sport_id=1, name=Test_Team1}
-2023-05-16 12:07:12 INFO  [http-nio-auto-1-exec-1] c.s.s.controller.UserController - [addUser] - {phone_no=9292, password=1234, user_type=Participant, email=v.s@in, username=Venkata}
-2023-05-16 12:07:12 INFO  [http-nio-auto-1-exec-2] c.s.s.controller.UserController - [login] - {password=1234, email=d.s@in}
-2023-05-16 12:07:12 INFO  [http-nio-auto-1-exec-3] c.s.s.controller.UserController - [updateSPOC] - m.s@in
-2023-05-16 12:08:00 INFO  [http-nio-auto-1-exec-1] c.s.s.controller.FixturesController - [updateResult] - getting fixtures for {result=Won by 20 runs, sport_id=1, winner=Test_Team1, id=1}
-2023-05-16 12:08:00 INFO  [http-nio-auto-1-exec-2] c.s.s.controller.FixturesController - [addFixture] - {sport_id=1, team1=Test_Team3, team2=Test_Team4, time=15-05-2023 22:00:00}
-2023-05-16 12:08:01 INFO  [http-nio-auto-1-exec-3] c.s.s.controller.FixturesController - [getFixtures] - getting fixtures for 1
-2023-05-16 12:08:01 INFO  [http-nio-auto-1-exec-4] c.s.s.controller.SportsController - [addSport] - Table Tennis
-2023-05-16 12:08:01 INFO  [http-nio-auto-1-exec-5] c.s.s.controller.SportsController - [getSports]
-2023-05-16 12:08:01 INFO  [http-nio-auto-1-exec-6] c.s.s.c.TeamMembersController - [getPlayers] - Test_Team1
-2023-05-16 12:08:01 INFO  [http-nio-auto-1-exec-7] c.s.s.c.TeamMembersController - [addMember] - {sport_id=1, participant_id=2, team=Test_Team2}
-2023-05-16 12:08:01 INFO  [http-nio-auto-1-exec-8] c.s.s.c.TeamMembersController - [getPlayersDetails] - Test_Team1
-2023-05-16 12:08:01 INFO  [http-nio-auto-1-exec-9] c.s.s.controller.TeamsController - [getTeams] - get teams of the sport with id 1
-2023-05-16 12:08:01 INFO  [http-nio-auto-1-exec-10] c.s.s.controller.TeamsController - [addTeam] - {sport_id=1, name=Test_Team1}
-2023-05-16 12:08:01 INFO  [http-nio-auto-1-exec-1] c.s.s.controller.UserController - [addUser] - {phone_no=9292, password=1234, user_type=Participant, email=v.s@in, username=Venkata}
-2023-05-16 12:08:01 INFO  [http-nio-auto-1-exec-2] c.s.s.controller.UserController - [login] - {password=1234, email=d.s@in}
-2023-05-16 12:08:01 INFO  [http-nio-auto-1-exec-3] c.s.s.controller.UserController - [updateSPOC] - m.s@in
-2023-05-16 12:08:59 INFO  [http-nio-auto-1-exec-1] c.s.s.controller.FixturesController - [updateResult] - getting fixtures for {result=Won by 20 runs, sport_id=1, winner=Test_Team1, id=1}
-2023-05-16 12:09:00 INFO  [http-nio-auto-1-exec-2] c.s.s.controller.FixturesController - [addFixture] - {sport_id=1, team1=Test_Team3, team2=Test_Team4, time=15-05-2023 22:00:00}
-2023-05-16 12:09:01 INFO  [http-nio-auto-1-exec-3] c.s.s.controller.FixturesController - [getFixtures] - getting fixtures for 1
-2023-05-16 12:09:01 INFO  [http-nio-auto-1-exec-4] c.s.s.controller.SportsController - [addSport] - Table Tennis
-2023-05-16 12:09:01 INFO  [http-nio-auto-1-exec-5] c.s.s.controller.SportsController - [getSports]
-2023-05-16 12:09:01 INFO  [http-nio-auto-1-exec-6] c.s.s.c.TeamMembersController - [getPlayers] - Test_Team1
-2023-05-16 12:09:02 INFO  [http-nio-auto-1-exec-7] c.s.s.c.TeamMembersController - [addMember] - {sport_id=1, participant_id=2, team=Test_Team2}
-2023-05-16 12:09:02 INFO  [http-nio-auto-1-exec-8] c.s.s.c.TeamMembersController - [getPlayersDetails] - Test_Team1
-2023-05-16 12:09:02 INFO  [http-nio-auto-1-exec-9] c.s.s.controller.TeamsController - [getTeams] - get teams of the sport with id 1
-2023-05-16 12:09:02 INFO  [http-nio-auto-1-exec-10] c.s.s.controller.TeamsController - [addTeam] - {sport_id=1, name=Test_Team1}
-2023-05-16 12:09:02 INFO  [http-nio-auto-1-exec-1] c.s.s.controller.UserController - [addUser] - {phone_no=9292, password=1234, user_type=Participant, email=v.s@in, username=Venkata}
-2023-05-16 12:09:02 INFO  [http-nio-auto-1-exec-2] c.s.s.controller.UserController - [login] - {password=1234, email=d.s@in}
-2023-05-16 12:09:02 INFO  [http-nio-auto-1-exec-3] c.s.s.controller.UserController - [updateSPOC] - m.s@in
-2023-05-16 12:09:42 INFO  [http-nio-auto-1-exec-2] c.s.s.controller.FixturesController - [updateResult] - getting fixtures for {result=Won by 20 runs, sport_id=1, winner=Test_Team1, id=1}
-2023-05-16 12:09:42 INFO  [http-nio-auto-1-exec-1] c.s.s.controller.FixturesController - [addFixture] - {sport_id=1, team1=Test_Team3, team2=Test_Team4, time=15-05-2023 22:00:00}
-2023-05-16 12:09:42 INFO  [http-nio-auto-1-exec-3] c.s.s.controller.FixturesController - [getFixtures] - getting fixtures for 1
-2023-05-16 12:09:43 INFO  [http-nio-auto-1-exec-4] c.s.s.controller.SportsController - [addSport] - Table Tennis
-2023-05-16 12:09:43 INFO  [http-nio-auto-1-exec-5] c.s.s.controller.SportsController - [getSports]
-2023-05-16 12:09:43 INFO  [http-nio-auto-1-exec-6] c.s.s.c.TeamMembersController - [getPlayers] - Test_Team1
-2023-05-16 12:09:43 INFO  [http-nio-auto-1-exec-7] c.s.s.c.TeamMembersController - [addMember] - {sport_id=1, participant_id=2, team=Test_Team2}
-2023-05-16 12:09:43 INFO  [http-nio-auto-1-exec-8] c.s.s.c.TeamMembersController - [getPlayersDetails] - Test_Team1
-2023-05-16 12:09:43 INFO  [http-nio-auto-1-exec-9] c.s.s.controller.TeamsController - [getTeams] - get teams of the sport with id 1
-2023-05-16 12:09:43 INFO  [http-nio-auto-1-exec-10] c.s.s.controller.TeamsController - [addTeam] - {sport_id=1, name=Test_Team1}
-2023-05-16 12:09:43 INFO  [http-nio-auto-1-exec-2] c.s.s.controller.UserController - [addUser] - {phone_no=9292, password=1234, user_type=Participant, email=v.s@in, username=Venkata}
-2023-05-16 12:09:43 INFO  [http-nio-auto-1-exec-1] c.s.s.controller.UserController - [login] - {password=1234, email=d.s@in}
-2023-05-16 12:09:43 INFO  [http-nio-auto-1-exec-3] c.s.s.controller.UserController - [updateSPOC] - m.s@in
+2023-05-16 12:31:05 INFO  c.s.s.controller.FixturesController - [updateResult] - getting fixtures for {result=Won by 20 runs, sport_id=1, winner=Test_Team1, id=1}
+2023-05-16 12:31:05 INFO  c.s.s.controller.FixturesController - [addFixture] - {sport_id=1, team1=Test_Team3, team2=Test_Team4, time=15-05-2023 22:00:00}
+2023-05-16 12:31:06 INFO  c.s.s.controller.FixturesController - [getFixtures] - getting fixtures for 1
+2023-05-16 12:31:06 INFO  c.s.s.controller.SportsController - [addSport] - Table Tennis
+2023-05-16 12:31:06 INFO  c.s.s.controller.SportsController - [getSports]
+2023-05-16 12:31:06 INFO  c.s.s.c.TeamMembersController - [getPlayers] - Test_Team1
+2023-05-16 12:31:06 INFO  c.s.s.c.TeamMembersController - [addMember] - {sport_id=1, participant_id=2, team=Test_Team2}
+2023-05-16 12:31:06 INFO  c.s.s.c.TeamMembersController - [getPlayersDetails] - Test_Team1
+2023-05-16 12:31:06 INFO  c.s.s.controller.TeamsController - [getTeams] - get teams of the sport with id 1
+2023-05-16 12:31:06 INFO  c.s.s.controller.TeamsController - [addTeam] - {sport_id=1, name=Test_Team1}
+2023-05-16 12:31:06 INFO  c.s.s.controller.UserController - [addUser] - {phone_no=9292, password=1234, user_type=Participant, email=v.s@in, username=Venkata}
+2023-05-16 12:31:06 INFO  c.s.s.controller.UserController - [login] - {password=1234, email=d.s@in}
+2023-05-16 12:31:06 INFO  c.s.s.controller.UserController - [updateSPOC] - m.s@in
+2023-05-16 12:31:57 INFO  c.s.s.controller.FixturesController - [updateResult] - getting fixtures for {result=Won by 20 runs, sport_id=1, winner=Test_Team1, id=1}
+2023-05-16 12:31:57 INFO  c.s.s.controller.FixturesController - [addFixture] - {sport_id=1, team1=Test_Team3, team2=Test_Team4, time=15-05-2023 22:00:00}
+2023-05-16 12:31:57 INFO  c.s.s.controller.FixturesController - [getFixtures] - getting fixtures for 1
+2023-05-16 12:31:58 INFO  c.s.s.controller.SportsController - [addSport] - Table Tennis
+2023-05-16 12:31:58 INFO  c.s.s.controller.SportsController - [getSports]
+2023-05-16 12:31:58 INFO  c.s.s.c.TeamMembersController - [getPlayers] - Test_Team1
+2023-05-16 12:31:58 INFO  c.s.s.c.TeamMembersController - [addMember] - {sport_id=1, participant_id=2, team=Test_Team2}
+2023-05-16 12:31:58 INFO  c.s.s.c.TeamMembersController - [getPlayersDetails] - Test_Team1
+2023-05-16 12:31:58 INFO  c.s.s.controller.TeamsController - [getTeams] - get teams of the sport with id 1
+2023-05-16 12:31:58 INFO  c.s.s.controller.TeamsController - [addTeam] - {sport_id=1, name=Test_Team1}
+2023-05-16 12:31:58 INFO  c.s.s.controller.UserController - [addUser] - {phone_no=9292, password=1234, user_type=Participant, email=v.s@in, username=Venkata}
+2023-05-16 12:31:58 INFO  c.s.s.controller.UserController - [login] - {password=1234, email=d.s@in}
+2023-05-16 12:31:58 INFO  c.s.s.controller.UserController - [updateSPOC] - m.s@in
+2023-05-16 12:35:48 INFO  c.s.s.controller.FixturesController - [updateResult] - getting fixtures for {result=Won by 20 runs, sport_id=1, winner=Test_Team1, id=1}
+2023-05-16 12:35:48 INFO  c.s.s.controller.FixturesController - [addFixture] - {sport_id=1, team1=Test_Team3, team2=Test_Team4, time=15-05-2023 22:00:00}
+2023-05-16 12:35:48 INFO  c.s.s.controller.FixturesController - [getFixtures] - getting fixtures for 1
+2023-05-16 12:35:49 INFO  c.s.s.controller.SportsController - [addSport] - Table Tennis
+2023-05-16 12:35:49 INFO  c.s.s.controller.SportsController - [getSports]
+2023-05-16 12:35:49 INFO  c.s.s.c.TeamMembersController - [getPlayers] - Test_Team1
+2023-05-16 12:35:49 INFO  c.s.s.c.TeamMembersController - [addMember] - {sport_id=1, participant_id=2, team=Test_Team2}
+2023-05-16 12:35:49 INFO  c.s.s.c.TeamMembersController - [getPlayersDetails] - Test_Team1
+2023-05-16 12:35:49 INFO  c.s.s.controller.TeamsController - [getTeams] - get teams of the sport with id 1
+2023-05-16 12:35:49 INFO  c.s.s.controller.TeamsController - [addTeam] - {sport_id=1, name=Test_Team1}
+2023-05-16 12:35:49 INFO  c.s.s.controller.UserController - [addUser] - {phone_no=9292, password=1234, user_type=Participant, email=v.s@in, username=Venkata}
+2023-05-16 12:35:50 INFO  c.s.s.controller.UserController - [login] - {password=1234, email=d.s@in}
+2023-05-16 12:35:50 INFO  c.s.s.controller.UserController - [updateSPOC] - m.s@in
+2023-05-16 12:43:41 INFO  c.s.s.controller.FixturesController - [updateResult] - getting fixtures for {result=Won by 20 runs, sport_id=1, winner=Test_Team1, id=1}
+2023-05-16 12:43:41 INFO  c.s.s.controller.FixturesController - [addFixture] - {sport_id=1, team1=Test_Team3, team2=Test_Team4, time=15-05-2023 22:00:00}
+2023-05-16 12:43:42 INFO  c.s.s.controller.FixturesController - [getFixtures] - getting fixtures for 1
+2023-05-16 12:43:43 INFO  c.s.s.controller.SportsController - [addSport] - Table Tennis
+2023-05-16 12:43:43 INFO  c.s.s.controller.SportsController - [getSports]
+2023-05-16 12:43:43 INFO  c.s.s.c.TeamMembersController - [getPlayers] - Test_Team1
+2023-05-16 12:43:43 INFO  c.s.s.c.TeamMembersController - [addMember] - {sport_id=1, participant_id=2, team=Test_Team2}
+2023-05-16 12:43:43 INFO  c.s.s.c.TeamMembersController - [getPlayersDetails] - Test_Team1
+2023-05-16 12:43:43 INFO  c.s.s.controller.TeamsController - [getTeams] - get teams of the sport with id 1
+2023-05-16 12:43:43 INFO  c.s.s.controller.TeamsController - [addTeam] - {sport_id=1, name=Test_Team1}
+2023-05-16 12:43:43 INFO  c.s.s.controller.UserController - [addUser] - {phone_no=9292, password=1234, user_type=Participant, email=v.s@in, username=Venkata}
+2023-05-16 12:43:43 INFO  c.s.s.controller.UserController - [login] - {password=1234, email=d.s@in}
+2023-05-16 12:43:43 INFO  c.s.s.controller.UserController - [updateSPOC] - m.s@in
+2023-05-16 12:53:51 INFO  c.s.s.controller.FixturesController - [updateResult] - getting fixtures for {result=Won by 20 runs, sport_id=1, winner=Test_Team1, id=1}
+2023-05-16 12:53:52 INFO  c.s.s.controller.FixturesController - [addFixture] - {sport_id=1, team1=Test_Team3, team2=Test_Team4, time=15-05-2023 22:00:00}
+2023-05-16 12:53:52 INFO  c.s.s.controller.FixturesController - [getFixtures] - getting fixtures for 1
+2023-05-16 12:53:52 INFO  c.s.s.controller.SportsController - [addSport] - Table Tennis
+2023-05-16 12:53:52 INFO  c.s.s.controller.SportsController - [getSports]
+2023-05-16 12:53:52 INFO  c.s.s.c.TeamMembersController - [getPlayers] - Test_Team1
+2023-05-16 12:53:53 INFO  c.s.s.c.TeamMembersController - [addMember] - {sport_id=1, participant_id=2, team=Test_Team2}
+2023-05-16 12:53:53 INFO  c.s.s.c.TeamMembersController - [getPlayersDetails] - Test_Team1
+2023-05-16 12:53:53 INFO  c.s.s.controller.TeamsController - [getTeams] - get teams of the sport with id 1
+2023-05-16 12:53:53 INFO  c.s.s.controller.TeamsController - [addTeam] - {sport_id=1, name=Test_Team1}
+2023-05-16 12:53:53 INFO  c.s.s.controller.UserController - [addUser] - {phone_no=9292, password=1234, user_type=Participant, email=v.s@in, username=Venkata}
+2023-05-16 12:53:53 INFO  c.s.s.controller.UserController - [login] - {password=1234, email=d.s@in}
+2023-05-16 12:53:53 INFO  c.s.s.controller.UserController - [updateSPOC] - m.s@in
