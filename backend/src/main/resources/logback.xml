@@ -22,22 +22,22 @@
     </root>
 
     <!-- Set log level for specific logs -->
-    <logger name="com.spe.spandan.controller.FixturesController" level="info">
+    <logger name="com.spe.spandan.controller.FixturesController" level="info" additivity="false">
         <appender-ref ref="FILE" />
     </logger>
-    <logger name="com.spe.spandan.controller.RulesNDateController" level="info">
+    <logger name="com.spe.spandan.controller.RulesNDateController" level="info" additivity="false">
         <appender-ref ref="FILE" />
     </logger>
-    <logger name="com.spe.spandan.controller.SportsController" level="info">
+    <logger name="com.spe.spandan.controller.SportsController" level="info" additivity="false">
         <appender-ref ref="FILE" />
     </logger>
-    <logger name="com.spe.spandan.controller.TeamMembersController" level="info">
+    <logger name="com.spe.spandan.controller.TeamMembersController" level="info" additivity="false">
         <appender-ref ref="FILE" />
     </logger>
-    <logger name="com.spe.spandan.controller.TeamsController" level="info">
+    <logger name="com.spe.spandan.controller.TeamsController" level="info" additivity="false">
         <appender-ref ref="FILE" />
     </logger>
-    <logger name="com.spe.spandan.controller.UserController" level="info">
+    <logger name="com.spe.spandan.controller.UserController" level="info" additivity="false">
         <appender-ref ref="FILE" />
     </logger>
 </configuration>

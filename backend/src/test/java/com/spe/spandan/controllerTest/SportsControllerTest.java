@@ -30,23 +30,23 @@ public class SportsControllerTest {
     private static final String SPOC_AUTH_TOKEN = "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkLnNAaW4iLCJ1c2VyX3R5cGUiOiJQYXJ0aWNpcGFudCIsImV4cCI6MTY4NTAyMjQ2NCwiaWF0IjoxNjg0MTU4NDY0fQ.QipOH7YyWSeUVSiYlb5kjHUtSYs05td6LyMVEARncT8";
 
     private static final String PARTICIPANT_AUTH_TOKEN = "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkLnNAaW4iLCJ1c2VyX3R5cGUiOiJQYXJ0aWNpcGFudCIsImV4cCI6MTY4NTAyMjQ2NCwiaWF0IjoxNjg0MTU4NDY0fQ.QipOH7YyWSeUVSiYlb5kjHUtSYs05td6LyMVEARncT8";
-//    @Test
-//    public void testAddSport() {
-//        HttpHeaders headers = new HttpHeaders();
-//        headers.set("Authorization", ADMIN_AUTH_TOKEN);
-//        headers.setContentType(MediaType.APPLICATION_JSON);
-//
-//        String requestBody = "Chess";
-//
-//        HttpEntity<String> requestEntity = new HttpEntity<>(requestBody, headers);
-//
-//        ResponseEntity<Message> responseEntity = restTemplate.postForEntity("/sport/addSport", requestEntity, Message.class);
-//
-//        assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
-//        assertNotNull(responseEntity.getBody());
-//        assertEquals("Sport added Successfully.", responseEntity.getBody().getMessage());
-//
-//    }
+    @Test
+    public void testAddSport() {
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("Authorization", ADMIN_AUTH_TOKEN);
+        headers.setContentType(MediaType.APPLICATION_JSON);
+
+        String requestBody = "Table Tennis";
+
+        HttpEntity<String> requestEntity = new HttpEntity<>(requestBody, headers);
+
+        ResponseEntity<Message> responseEntity = restTemplate.postForEntity("/sport/addSport", requestEntity, Message.class);
+
+        assertEquals(HttpStatus.BAD_REQUEST, responseEntity.getStatusCode());
+        assertNotNull(responseEntity.getBody());
+        assertEquals("Sport Already exists.", responseEntity.getBody().getMessage());
+
+    }
 
     @Test
     public void testGetSports() {

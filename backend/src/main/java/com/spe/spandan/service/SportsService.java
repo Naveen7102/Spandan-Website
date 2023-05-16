@@ -26,7 +26,7 @@ public class SportsService {
                 return new ResponseEntity<Message>(success, HttpStatus.OK);
             }
             Message addfailed = new Message("Sport Already exists.");
-            return new ResponseEntity<Message>(addfailed, HttpStatus.OK);
+            return new ResponseEntity<Message>(addfailed, HttpStatus.BAD_REQUEST);
         }
         catch (Exception e)
         {

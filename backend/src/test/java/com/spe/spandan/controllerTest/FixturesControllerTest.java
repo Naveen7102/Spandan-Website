@@ -32,26 +32,26 @@ public class FixturesControllerTest {
     private static final String SPOC_AUTH_TOKEN = "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkLnNAaW4iLCJ1c2VyX3R5cGUiOiJQYXJ0aWNpcGFudCIsImV4cCI6MTY4NTAyMjQ2NCwiaWF0IjoxNjg0MTU4NDY0fQ.QipOH7YyWSeUVSiYlb5kjHUtSYs05td6LyMVEARncT8";
 
     private static final String PARTICIPANT_AUTH_TOKEN = "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkLnNAaW4iLCJ1c2VyX3R5cGUiOiJQYXJ0aWNpcGFudCIsImV4cCI6MTY4NTAyMjQ2NCwiaWF0IjoxNjg0MTU4NDY0fQ.QipOH7YyWSeUVSiYlb5kjHUtSYs05td6LyMVEARncT8";
-//    @Test
-//    public void testAddFixture() {
-//        HttpHeaders headers = new HttpHeaders();
-//        headers.set("Authorization", SPOC_AUTH_TOKEN);
-//        headers.setContentType(MediaType.APPLICATION_JSON);
-//
-//        Map<String, String> requestBody = new HashMap<>();
-//        requestBody.put("sport_id", "1");
-//        requestBody.put("time", "15-05-2023 22:00:00");
-//        requestBody.put("team1", "Test_Team1");
-//        requestBody.put("team2", "Test_Team2");
-//
-//        HttpEntity<Map<String, String>> requestEntity = new HttpEntity<>(requestBody, headers);
-//
-//        ResponseEntity<Message> responseEntity = restTemplate.postForEntity("/fixtures/addFixture", requestEntity, Message.class);
-//
-//        assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
-//        assertNotNull(responseEntity.getBody());
-//        assertEquals("Fixture added Successfully.", responseEntity.getBody().getMessage());
-//    }
+    @Test
+    public void testAddFixture() {
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("Authorization", SPOC_AUTH_TOKEN);
+        headers.setContentType(MediaType.APPLICATION_JSON);
+
+        Map<String, String> requestBody = new HashMap<>();
+        requestBody.put("sport_id", "1");
+        requestBody.put("time", "15-05-2023 22:00:00");
+        requestBody.put("team1", "Test_Team3");
+        requestBody.put("team2", "Test_Team4");
+
+        HttpEntity<Map<String, String>> requestEntity = new HttpEntity<>(requestBody, headers);
+
+        ResponseEntity<Message> responseEntity = restTemplate.postForEntity("/fixtures/addFixture", requestEntity, Message.class);
+
+        assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
+        assertNotNull(responseEntity.getBody());
+        assertEquals("Fixture added Successfully.", responseEntity.getBody().getMessage());
+    }
 
     @Test
     public void testGetFixtures() throws Exception {

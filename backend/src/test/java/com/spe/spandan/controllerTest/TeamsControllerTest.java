@@ -28,22 +28,22 @@ public class TeamsControllerTest {
     private static final String SPOC_AUTH_TOKEN = "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkLnNAaW4iLCJ1c2VyX3R5cGUiOiJQYXJ0aWNpcGFudCIsImV4cCI6MTY4NTAyMjQ2NCwiaWF0IjoxNjg0MTU4NDY0fQ.QipOH7YyWSeUVSiYlb5kjHUtSYs05td6LyMVEARncT8";
 
     private static final String PARTICIPANT_AUTH_TOKEN = "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkLnNAaW4iLCJ1c2VyX3R5cGUiOiJQYXJ0aWNpcGFudCIsImV4cCI6MTY4NTAyMjQ2NCwiaWF0IjoxNjg0MTU4NDY0fQ.QipOH7YyWSeUVSiYlb5kjHUtSYs05td6LyMVEARncT8";
-//    @Test
-//    public void addTeamTest() {
-//        HttpHeaders headers = new HttpHeaders();
-//        headers.setContentType(MediaType.APPLICATION_JSON);
-//        headers.set("Authorization", ADMIN_AUTH_TOKEN);
-//
-//        Map<String, String> teamMap = new HashMap<>();
-//        teamMap.put("name", "Test_Team4");
-//        teamMap.put("sport_id", "1");
-//
-//        HttpEntity<Map<String, String>> request = new HttpEntity<>(teamMap, headers);
-//        ResponseEntity<Message> response = restTemplate.exchange("/teams/addTeam", HttpMethod.POST, request, Message.class);
-//
-//        assertEquals(HttpStatus.OK, response.getStatusCode());
-//        assertEquals("Team added Successfully.", response.getBody().getMessage());
-//    }
+    @Test
+    public void addTeamTest() {
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        headers.set("Authorization", ADMIN_AUTH_TOKEN);
+
+        Map<String, String> teamMap = new HashMap<>();
+        teamMap.put("name", "Test_Team1");
+        teamMap.put("sport_id", "1");
+
+        HttpEntity<Map<String, String>> request = new HttpEntity<>(teamMap, headers);
+        ResponseEntity<Message> response = restTemplate.exchange("/teams/addTeam", HttpMethod.POST, request, Message.class);
+
+        assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
+        assertEquals("Team already exists", response.getBody().getMessage());
+    }
 
     @Test
     public void getTeamsTest() {

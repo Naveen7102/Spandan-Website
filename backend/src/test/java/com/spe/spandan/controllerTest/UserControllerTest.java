@@ -38,25 +38,25 @@ public class UserControllerTest {
     @Autowired
     UserRepository userRepository;
 
-//    @Test
-//    public void testAddUser() throws Exception {
-//        HttpHeaders headers = new HttpHeaders();
-//        headers.setContentType(MediaType.APPLICATION_JSON);
-//
-//        Map<String, String> requestBody = new HashMap<>();
-//        requestBody.put("username", "Venkata");
-//        requestBody.put("password", "1234");
-//        requestBody.put("email", "v.s@in");
-//        requestBody.put("phone_no", "9292");
-//        requestBody.put("user_type", "Participant");
-//
-//        HttpEntity<Map<String, String>> entity = new HttpEntity<>(requestBody, headers);
-//        ResponseEntity<Message> response = restTemplate.postForEntity("/user/addUser", entity, Message.class);
-//
-//        assertEquals(HttpStatus.OK, response.getStatusCode());
-//        assertNotNull(response.getBody());
-//        assertEquals("User added Successfully.", response.getBody().getMessage());
-//    }
+    @Test
+    public void testAddUser() throws Exception {
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+
+        Map<String, String> requestBody = new HashMap<>();
+        requestBody.put("username", "Venkata");
+        requestBody.put("password", "1234");
+        requestBody.put("email", "v.s@in");
+        requestBody.put("phone_no", "9292");
+        requestBody.put("user_type", "Participant");
+
+        HttpEntity<Map<String, String>> entity = new HttpEntity<>(requestBody, headers);
+        ResponseEntity<Message> response = restTemplate.postForEntity("/user/addUser", entity, Message.class);
+
+        assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
+        assertNotNull(response.getBody());
+        assertEquals("User already exists", response.getBody().getMessage());
+    }
 
     @Test
     public void testLogin() {
