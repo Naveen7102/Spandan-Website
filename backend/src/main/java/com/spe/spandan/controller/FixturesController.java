@@ -25,7 +25,7 @@ public class FixturesController {
 
     @PostMapping(path = "fixtures/addFixture")
     public ResponseEntity<Message> addFixture(@RequestBody(required = true) Map<String, String> requestMap) {
-        logger.info("[addFixture] - " + requestMap);
+        logger.info("[addFixture] - adding a new fixture");
         Message failed = new Message("Something Went Wrong at Fixture Controller.");
         try{
             return fixturesService.addFixture(requestMap);
@@ -53,7 +53,7 @@ public class FixturesController {
 
     @PostMapping(path = "fixtures/updateResult")
     public ResponseEntity<Message> updateResult(@RequestBody(required = true) Map<String, String> requestMap){
-        logger.info("[updateResult] - getting fixtures for " + requestMap);
+        logger.info("[updateResult] - Updating the result");
         Message failed = new Message("Something Went Wrong at Fixture Controller.");
         try{
             return fixturesService.updateResult(requestMap);

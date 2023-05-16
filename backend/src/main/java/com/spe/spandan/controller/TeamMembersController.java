@@ -26,7 +26,7 @@ public class TeamMembersController {
 
     @PostMapping(path = "teamMembers/addMember")
     public ResponseEntity<Message> addMember(@RequestBody(required = true) Map<String, String> requestMap) {
-        logger.info("[addMember] - " + requestMap);
+        logger.info("[addMember] - adding player to team");
         Message failed = new Message("Something Went Wrong at TeamMember Controller.");
         try{
             return teamMembersService.addMember(requestMap);
@@ -40,7 +40,7 @@ public class TeamMembersController {
 
     @GetMapping(path = "teamMembers/getPlayers")
     public ResponseEntity<ArrayList<String>> getPlayers(@RequestParam(required = true) Integer sport_id, @RequestParam(required = true) String team){
-        logger.info("[getPlayers] - " + team);
+        logger.info("[getPlayers] - getting player details " + team + " " + sport_id);
         try{
 //            System.out.println(requestMap);
             return teamMembersService.getPlayers(sport_id,team);
@@ -55,7 +55,7 @@ public class TeamMembersController {
 
     @GetMapping(path = "teamMembers/getPlayersDetails")
     public ResponseEntity<ArrayList<User>> getPlayersDetails(@RequestParam(required = true) Integer sport_id, @RequestParam(required = true) String team){
-        logger.info("[getPlayersDetails] - " + team);
+        logger.info("[getPlayersDetails] - getting player details " + team + " " + sport_id);
         try{
             return teamMembersService.getPlayersDetails(sport_id,team);
         }

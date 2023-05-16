@@ -25,7 +25,7 @@ public class UserController {
 
     @PostMapping(path = "user/addUser")
     public ResponseEntity<Message> addUser(@RequestBody(required = true) Map<String, String> requestMap) {
-        logger.info("[addUser] - " + requestMap);
+        logger.info("[addUser] - adding a new user");
         try{
             return userService.addUser(requestMap);
         }
@@ -39,7 +39,7 @@ public class UserController {
 
     @PostMapping(path = "user/login")
     public ResponseEntity<User> login(@RequestBody(required = true) Map<String, String> requestMap) {
-        logger.info("[login] - " + requestMap);
+        logger.info("[login] - logging in");
         try{
             return userService.login(requestMap);
         }
@@ -53,7 +53,7 @@ public class UserController {
 
     @PostMapping(path = "user/updateSPOC")
     public ResponseEntity<Message> updateSPOC(@RequestBody(required = true) String email){
-        logger.info("[updateSPOC] - " + email);
+        logger.info("[updateSPOC] - updating role for " + email);
         try{
             return userService.updateSPOC(email);
         }

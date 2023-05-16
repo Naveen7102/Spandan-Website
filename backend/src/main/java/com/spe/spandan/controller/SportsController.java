@@ -44,7 +44,7 @@ public class SportsController {
 
     @GetMapping(path = "sport/getSports")
     public ResponseEntity<ArrayList<Sports>> getSports() {
-        logger.info("[getSports]");
+        logger.info("[getSports] - get the sports");
         try{
             ArrayList<Sports> s = sportsRepository.getSports();
             return new ResponseEntity<ArrayList<Sports>>(s, HttpStatus.OK);

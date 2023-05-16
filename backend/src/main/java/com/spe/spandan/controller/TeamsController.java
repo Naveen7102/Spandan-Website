@@ -24,7 +24,7 @@ public class TeamsController {
 
     @PostMapping(path = "teams/addTeam")
     public ResponseEntity<Message> addTeam(@RequestBody(required = true) Map<String, String> requestMap) {
-        logger.info("[addTeam] - " + requestMap);
+        logger.info("[addTeam] - adding a new team");
         Message failed = new Message("Something Went Wrong at Teams Controller.");
         try{
             return teamsService.addTeam(requestMap);

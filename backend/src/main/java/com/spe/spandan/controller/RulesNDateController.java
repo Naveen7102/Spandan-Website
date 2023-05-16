@@ -31,7 +31,7 @@ public class RulesNDateController {
     @Transactional
     @PostMapping(path = "date/addStartDate")
     public ResponseEntity<Message> addDate(@RequestBody(required = true) Map<String, String> requestMap) {
-        logger.info("[addDate] - " + requestMap);
+        logger.info("[addDate] - adding a new date");
         try{
             startDateRepository.updateDate(requestMap.get("date"));
             Message success = new Message("Date added Successfully.");
@@ -47,7 +47,7 @@ public class RulesNDateController {
 
     @GetMapping(path = "date/getDate")
     public ResponseEntity<StartDate> getDate(){
-        logger.info("[getDate]");
+        logger.info("[getDate] - get the added date");
         try{
             return new ResponseEntity<StartDate>(startDateRepository.getDate(), HttpStatus.OK);
         }
@@ -61,7 +61,7 @@ public class RulesNDateController {
 
     @PostMapping(path = "rules/addRule")
     public ResponseEntity<Message> addRule(@RequestBody(required = true) Map<String, String> requestMap) {
-        logger.info("[addRule] - " + requestMap);
+        logger.info("[addRule] - adding a new rule");
         try{
             Rules r = new Rules();
             r.setRule(requestMap.get("rule").getBytes());
