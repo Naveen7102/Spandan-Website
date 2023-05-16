@@ -1,30 +1,45 @@
+version: "2.4"
 services:
-  
+  mysqldb-container:
+    image: mysql/mysql-server
+    container_name: mysqldb-container
+    ports:
+      - 3308:3306
+    volumes:
+      - "./admin.sql:/docker-entrypoint-initdb.d/1/admin.sql"
+    networks:
+      - my_net
+    environment:
+      - MYSQL_ROOT_PASSWORD=Jakhi*123
+      - MYSQL_DATABASE=spandan
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=Jakhi*123
+
   backend:
-          image: naveen7102/backend:latest
-          container_name: spandan-backend
-    ports:
-            - "8101:8101"
+    image: naveen7102/backend
+    container_name: backend
     networks:
-            spandan:
-                    ipv4_address: 172.28.1.7
-    
- 
+      - my_net
+    environment:
+      - DATABASE_URL=jdbc:mysql://mysqldb-container:3306/hostel
+    ports:
+      - "8087:8087"
+    links:
+      - mysqldb-container
+    depends_on:
+      mysqldb-container:
+        condition: service_healthy
+
   frontend:
-    image: naveen7102/frontend:latest
-    container_name: spandan-frontend
-    stdin_open: true
-    ports:
-           - "4201:4200"
+    image: naveen7102/frontend
+    container_name: frontend
     networks:
-            spandan:
-                    ipv4_address: 172.28.1.6
-       
+      - my_net
+    ports:
+      - "4500:4200"
+    depends_on:
+      - backend
 
-  networks:
-          spandan:
-                  ipam:
-                          driver: default
-                          config:
-                          -subnet: 172.28.1.0/24
 
+networks:
+  my_net:
